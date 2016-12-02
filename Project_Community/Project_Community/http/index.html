@@ -1,10 +1,166 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-	<meta charset="utf-8" />
+    <title>Community Website</title>
+    <meta charset="utf-8" />
+
+    <!--CSS files loaded here-->
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+
+    <!--My CSS file loaded here-->
+    <link href="../Content/css/mystyles.css" rel="stylesheet" />
 </head>
 <body>
+    <!--Start div-->
+    <div class="container-fluid">
+
+        <!--Navbar menu-->
+        <div class="navbar-wrapper">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="col-md-9 col-centered" id="mainnav">
+                        <nav class="navbar navbar-nav">
+                            <!--<div class="container">-->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" id="nav_logo" href="#">CommunityWebsite</a>
+                                </div>
+                                <div id="navbar" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a href="#" class="">Home</a></li>
+                                        <li><a href="#">Forum</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder 1 <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Placeholder2</a></li>
+                                                <li><a href="#">Placeholder3</a></li>
+                                                <li><a href="#">Placeholder4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="down">
+                                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Placeholder</a></li>
+                                                <li><a href="#">Placeholder</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <!--Navbar Login Dropdown-->
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                                <strong id="username_text">Username</strong>
+                                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li id="profile_li">
+                                                    <div class="navbar-login">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <p class="text-center">
+                                                                    <span class="glyphicon glyphicon-user icon-size"></span>
+                                                                </p>
+                                                                <p class="text-right" id="username_text">
+                                                                    <span id="user_icon" class="glyphicon glyphicon-user">
+                                                                    </span><strong> Marcus</strong>
+                                                                </p>
+
+                                                                <p class="text-right" id="username_text">
+                                                                    <span id="user_icon" class="glyphicon glyphicon-envelope">
+                                                                    </span><strong> knakkan@gmail.com</strong>
+                                                                </p>
+
+                                                                <p class="text-right" id="username_text">
+                                                                    <span id="user_icon" class="fa fa-id-card-o">
+                                                                    </span><strong>Admin</strong>
+                                                                </p>
+                                                                <p class="text-center">
+                                                                    <a id="profile_btn" href="#" class="btn btn-primary btn-block btn-sm">
+                                                                        <span class="fa fa-cog"></span> Profile Settings
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="divider" id="username_divider"></li>
+                                                <li id="logout_li">
+                                                    <div class="navbar-login navbar-login-session">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <p id="logout_btn">
+                                                                    <a href="#" class="btn btn-danger btn-block"><span class="fa fa-sign-out"></span> Logout</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            <!--</div>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Main Content Area-->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-md-9 col-centered" id="mainContent">
+                    <h1 id="mainContent_text">Test header</h1>
+                    <blockquote class="blockquote" id="mainContent_text">
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                            Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
+                        </p>
+                        <footer id="mainContent_text" class="blockquote-footer">Donald Trump <cite title="Source Title"><b>The Guardian</b></cite></footer>
+                    </blockquote>
+                    <br />
+                    <p class="lead" id="mainContent_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p id="mainContent_text">
+                        Maecenas ut nibh sed nunc viverra congue vel eu felis.
+                        Donec leo justo, viverra non nunc sit amet, venenatis dapibus neque.
+                        Duis dapibus eget orci eget varius. Vestibulum at viverra lorem.
+                        Maecenas neque felis, tempor eget facilisis a, viverra nec neque. Aliquam dictum sapien et ligula pulvinar,
+                        at lobortis est cursus. Donec quis lectus sed tortor feugiat laoreet. Pellentesque condimentum velit ut elit sollicitudin porttitor.
+                        Nam blandit sodales eros. Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
+                        Nam ornare tristique ipsum eu sagittis. Morbi viverra vehicula est ut aliquet.
+                        <br /><br />
+
+                        Quisque vehicula nisi eu lectus efficitur sodales. Aliquam dui nunc, sagittis at auctor ut, auctor nec odio.
+                        Nam a elit diam. Nunc eget nisl dapibus, tristique tortor eget, cursus velit. Nam rutrum nec dolor vitae vulputate.
+                        Vivamus odio tellus, egestas ac pretium a, vulputate eget turpis. Nunc iaculis vehicula lorem, in viverra sem hendrerit ut.
+                        Fusce eu porttitor tellus, quis fringilla tortor.
+                    </p>
+                    <br />
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!--End div-->
+    <!--Scripts loaded here-->
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+
+    <!--My script file-->
+    <script src="../Content/js/myjs.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,160 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Questrial);
+
+body {
+    background-image: url('../images/62728388.jpg');
+    font-family: 'Questrial', sans-serif;
+    color: #FFF;
+}
+
+.navbar {
+    background: rgba(0,0,0,0.8);
+}
+
+.navbar, .dropdown-menu {
+    /*background: rgba(255,255,255,0.25);*/
+    border: none;
+    background: rgba(0,0,0,0.8);
+}
+
+    .nav > li > a, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu > li > a, .dropdown-menu > li {
+        border-bottom: 0px solid transparent;
+    }
+
+        .nav > li > a:focus, .nav > li > a:hover, .nav .open > a, .nav .open > a:focus, .nav .open > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+            border-bottom: 0px solid transparent;
+            background: dimgrey;
+        }
+
+        .navbar a, .dropdown-menu > li > a, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .navbar-toggle {
+            color: #fff;
+        }
+
+.dropdown-menu {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.nav li:hover:nth-child(8n+1), .nav li.active:nth-child(8n+1) {
+    border-bottom: #C4E17F 0px solid;
+}
+
+.nav li:hover:nth-child(8n+2), .nav li.active:nth-child(8n+2) {
+    border-bottom: #F7FDCA 0px solid;
+}
+
+.nav li:hover:nth-child(8n+3), .nav li.active:nth-child(8n+3) {
+    border-bottom: #FECF71 0px solid;
+}
+
+.nav li:hover:nth-child(8n+4), .nav li.active:nth-child(8n+4) {
+    border-bottom: #F0776C 0px solid;
+}
+
+.nav li:hover:nth-child(8n+5), .nav li.active:nth-child(8n+5) {
+    border-bottom: #DB9DBE 0px solid;
+}
+
+.nav li:hover:nth-child(8n+6), .nav li.active:nth-child(8n+6) {
+    border-bottom: #C49CDE 0px solid;
+}
+
+.nav li:hover:nth-child(8n+7), .nav li.active:nth-child(8n+7) {
+    border-bottom: #669AE1 0px solid;
+}
+
+.nav li:hover:nth-child(8n+8), .nav li.active:nth-child(8n+8) {
+    border-bottom: #62C2E4 0px solid;
+}
+
+.navbar-toggle .icon-bar {
+    color: #fff;
+    background: #fff;
+}
+
+
+.navbar-login {
+    width: 170px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+a:hover {
+    background-color: dimgrey;
+}
+
+.navbar-login-session {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size {
+    font-size: 87px;
+}
+
+#username_text {
+    color: chartreuse;
+}
+
+#logout_li {
+    border-bottom: 0px;
+}
+
+#profile_li {
+    border-bottom: 0px;
+}
+
+#username_divider {
+    border-bottom: 0px;
+}
+
+#profile_btn {
+    display: block;
+    width: 130px;
+    margin: auto;
+    /*float: right;*/
+}
+
+#nav_logo {
+    color: chartreuse;
+}
+
+#logout_btn {
+    margin: auto;
+}
+
+
+.navbar-fixed-top .navbar-collapse {
+    max-height: 580px;
+}
+
+#user_icon {
+    color: white;
+    float: left;
+}
+
+#user_emailicon {
+    color: white;
+    float: left;
+}
+
+#mainContent {
+    /*background-color: rgba(255,255,255,0.25);*/
+    background-color: rgba(17, 17, 17,0.85);
+    border: 1px solid chartreuse;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#mainnav {
+    margin-top: 20px;
+}
+
+#mainContent_text {
+    color: #fff;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
