@@ -3,6 +3,7 @@
 <head>
     <title>Community Website</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--CSS files loaded here-->
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -16,101 +17,133 @@
     <div class="container-fluid">
 
         <!--Navbar menu-->
-        <div class="navbar-wrapper">
-            <div class="row">
-                <div class="container-fluid">
-                    <div class="col-md-9 col-centered" id="mainnav">
-                        <nav class="navbar navbar-nav">
-                            <!--<div class="container">-->
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" id="nav_logo" href="#">CommunityWebsite</a>
-                                </div>
-                                <div id="navbar" class="navbar-collapse collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li class="active"><a href="#" class="">Home</a></li>
-                                        <li><a href="#">Forum</a></li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder 1 <span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Placeholder2</a></li>
-                                                <li><a href="#">Placeholder3</a></li>
-                                                <li><a href="#">Placeholder4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="down">
-                                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder <span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Placeholder</a></li>
-                                                <li><a href="#">Placeholder</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+        <!--<div class="navbar-wrapper">-->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-md-7 col-centered" id="mainnav">
+                    <nav class="navbar navbar-nav col-centered">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" id="nav_logo" href="#">CommunityWebsite</a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="#" class="">Home</a></li>
+                                    <li><a href="#">Forum</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder 1 <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" id="nav_drop_1">
+                                            <li><a href="#">Placeholder2</a></li>
+                                            <li><a href="#">Placeholder3</a></li>
+                                            <li><a href="#">Placeholder4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="down">
+                                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" id="nav_drop_2">
+                                            <li><a href="#">Placeholder</a></li>
+                                            <li><a href="#">Placeholder</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
 
-                                    <!--Navbar Login Dropdown-->
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <span class="glyphicon glyphicon-user"></span>
-                                                <strong id="username_text">Username</strong>
-                                                <span class="glyphicon glyphicon-chevron-down"></span>
+
+
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+
+
+        <!--User Login Button Dropdown-->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-md-7 col-centered">
+                    <ul class="nav navbar-nav" id="username_button_nav">
+                        <li class="dropdown">
+                            <button id="username_button_nav" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <strong id="username_text">Username</strong>
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="user_dropdown">
+                                <li id="profile_li">
+                                    <div class="navbar-login">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <span class="glyphicon glyphicon-user icon-size"></span>
+                                                </p>
+                                                <p class="text-right" id="username_text">
+                                                    <span id="user_icon" class="glyphicon glyphicon-user">
+                                                    </span><strong> Marcus</strong>
+                                                </p>
+                                                <p class="text-right" id="username_text">
+                                                    <span id="user_icon" class="fa fa-id-card-o">
+                                                    </span><strong>Admin</strong>
+                                                </p>
+
+                                                <!--Settings buttons/links-->
+                                                <p class="text-right">
+                                                    <a id="settings_btn" href="#" class="btn btn-xs btn-block">
+                                                        <span class="fa fa-cog"></span> Account Settings
+                                                    </a>
+                                                </p>
+                                                <p class="text-right">
+                                                    <a id="settings_btn" href="#" class="btn btn-xs btn-block">
+                                                        <span class="fa fa-envelope-open"></span> Messages
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider" id="username_divider"></li>
+
+                                <!--Admin only-->
+                                <li id="profile_li">
+                                    <div class="col-lg-12">
+                                        <p class="text-center">
+                                            <a id="profile_li" href="#" class="btn btn-success btn-block btn-sm">
+                                                <span class="fa fa-adjust"></span> Admin
                                             </a>
-                                            <ul class="dropdown-menu">
-                                                <li id="profile_li">
-                                                    <div class="navbar-login">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <p class="text-center">
-                                                                    <span class="glyphicon glyphicon-user icon-size"></span>
-                                                                </p>
-                                                                <p class="text-right" id="username_text">
-                                                                    <span id="user_icon" class="glyphicon glyphicon-user">
-                                                                    </span><strong> Marcus</strong>
-                                                                </p>
+                                        </p>
+                                    </div>
+                                </li>
 
-                                                                <p class="text-right" id="username_text">
-                                                                    <span id="user_icon" class="glyphicon glyphicon-envelope">
-                                                                    </span><strong> knakkan@gmail.com</strong>
-                                                                </p>
+                                <li id="profile_li">
+                                    <div class="col-lg-12">
+                                        <p class="text-center">
+                                            <a id="profile_btn" href="#" class="btn btn-primary btn-block btn-sm">
+                                                <span class="fa fa-cog"></span> Profile
+                                            </a>
+                                        </p>
+                                    </div>
+                                </li>
 
-                                                                <p class="text-right" id="username_text">
-                                                                    <span id="user_icon" class="fa fa-id-card-o">
-                                                                    </span><strong>Admin</strong>
-                                                                </p>
-                                                                <p class="text-center">
-                                                                    <a id="profile_btn" href="#" class="btn btn-primary btn-block btn-sm">
-                                                                        <span class="fa fa-cog"></span> Profile Settings
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="divider" id="username_divider"></li>
-                                                <li id="logout_li">
-                                                    <div class="navbar-login navbar-login-session">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <p id="logout_btn">
-                                                                    <a href="#" class="btn btn-danger btn-block"><span class="fa fa-sign-out"></span> Logout</a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            <!--</div>-->
-                        </nav>
-                    </div>
+                                <li id="logout_li">
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p id="logout_btn">
+                                                    <a href="#" class="btn btn-danger btn-block"><span class="fa fa-sign-out"></span> Logout</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -118,7 +151,7 @@
         <!--Main Content Area-->
         <div class="row">
             <div class="container-fluid">
-                <div class="col-md-9 col-centered" id="mainContent">
+                <div class="col-md-7 col-centered" id="mainContent">
                     <h1 id="mainContent_text">Test header</h1>
                     <blockquote class="blockquote" id="mainContent_text">
                         <p class="mb-0">
@@ -128,28 +161,162 @@
                         <footer id="mainContent_text" class="blockquote-footer">Donald Trump <cite title="Source Title"><b>The Guardian</b></cite></footer>
                     </blockquote>
                     <br />
-                    <p class="lead" id="mainContent_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <p id="mainContent_text">
-                        Maecenas ut nibh sed nunc viverra congue vel eu felis.
-                        Donec leo justo, viverra non nunc sit amet, venenatis dapibus neque.
-                        Duis dapibus eget orci eget varius. Vestibulum at viverra lorem.
-                        Maecenas neque felis, tempor eget facilisis a, viverra nec neque. Aliquam dictum sapien et ligula pulvinar,
-                        at lobortis est cursus. Donec quis lectus sed tortor feugiat laoreet. Pellentesque condimentum velit ut elit sollicitudin porttitor.
-                        Nam blandit sodales eros. Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
-                        Nam ornare tristique ipsum eu sagittis. Morbi viverra vehicula est ut aliquet.
-                        <br /><br />
 
-                        Quisque vehicula nisi eu lectus efficitur sodales. Aliquam dui nunc, sagittis at auctor ut, auctor nec odio.
-                        Nam a elit diam. Nunc eget nisl dapibus, tristique tortor eget, cursus velit. Nam rutrum nec dolor vitae vulputate.
-                        Vivamus odio tellus, egestas ac pretium a, vulputate eget turpis. Nunc iaculis vehicula lorem, in viverra sem hendrerit ut.
-                        Fusce eu porttitor tellus, quis fringilla tortor.
-                    </p>
-                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="lead" id="mainContent_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p id="mainContent_text">
+                                Maecenas ut nibh sed nunc viverra congue vel eu felis.
+                                Donec leo justo, viverra non nunc sit amet, venenatis dapibus neque.
+                                Duis dapibus eget orci eget varius. Vestibulum at viverra lorem.
+                                Maecenas neque felis, tempor eget facilisis a, viverra nec neque. Aliquam dictum sapien et ligula pulvinar,
+                                at lobortis est cursus. Donec quis lectus sed tortor feugiat laoreet. Pellentesque condimentum velit ut elit sollicitudin porttitor.
+                                Nam blandit sodales eros. Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
+                                Nam ornare tristique ipsum eu sagittis. Morbi viverra vehicula est ut aliquet.
+                                <br /><br />
+
+                                Quisque vehicula nisi eu lectus efficitur sodales. Aliquam dui nunc, sagittis at auctor ut, auctor nec odio.
+                                Nam a elit diam. Nunc eget nisl dapibus, tristique tortor eget, cursus velit. Nam rutrum nec dolor vitae vulputate.
+                                Vivamus odio tellus, egestas ac pretium a, vulputate eget turpis. Nunc iaculis vehicula lorem, in viverra sem hendrerit ut.
+                                Fusce eu porttitor tellus, quis fringilla tortor.
+                            </p>
+                            <br />
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="lead" id="mainContent_text">Lor2 ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p id="mainContent_text">
+                                Maecenas ut nibh sed nunc viverra congue vel eu felis.
+                                Donec leo justo, viverra non nunc sit amet, venenatis dapibus neque.
+                                Duis dapibus eget orci eget varius. Vestibulum at viverra lorem.
+                                Maecenas neque felis, tempor eget facilisis a, viverra nec neque. Aliquam dictum sapien et ligula pulvinar,
+                                at lobortis est cursus. Donec quis lectus sed tortor feugiat laoreet. Pellentesque condimentum velit ut elit sollicitudin porttitor.
+                                Nam blandit sodales eros. Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
+                                Nam ornare tristique ipsum eu sagittis. Morbi viverra vehicula est ut aliquet.
+                                <br /><br />
+
+                                Quisque vehicula nisi eu lectus efficitur sodales. Aliquam dui nunc, sagittis at auctor ut, auctor nec odio.
+                                Nam a elit diam. Nunc eget nisl dapibus, tristique tortor eget, cursus velit. Nam rutrum nec dolor vitae vulputate.
+                                Vivamus odio tellus, egestas ac pretium a, vulputate eget turpis. Nunc iaculis vehicula lorem, in viverra sem hendrerit ut.
+                                Fusce eu porttitor tellus, quis fringilla tortor.
+                            </p>
+                            <br />
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
 
 
+        <!--Live Chat-->
+        <!--Only show if logged in-->
+        <section class="box-position">
+            <div class="container">
+                <div class="col-xs-12 col-md-3 col-sm-4 pull-right hidden-xs">
+                    <!--Message box title-->
+                    <div id="chat_panel_click" class="panel collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#message" aria-expanded="false" aria-controls="message">
+
+                        <div class="panel-heading top-bar" role="tab" id="open-message">
+
+                            <div class="col-md-10 col-xs-10">
+                                <p class="panel-title"><span class="glyphicon glyphicon-comment"></span>  Chat</p>
+                            </div>
+
+                            <div class="col-md-2 col-xs-2">
+                                <a id="plus_icon_hover" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#message" aria-expanded="false" aria-controls="message">
+                                    <span id="plus_icon_chat" class="glyphicon  glyphicon-plus"></span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Message body-->
+
+                    <div id="message" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <form action="#">
+
+                                <div class="form-group ">
+                                    <input type="text" class="form-control" id="name" placeholder="Name" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" type="text" class="form-control counted" id="message" placeholder="Message..." required="required"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" class="form-control btn-success" id="submit" value="Send">
+                                </div>
+
+                                <div class="text-center">
+                                    <h6 class="pull-right" id="counter">320 characters remaining</h6>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!--FOOTER 1-->
+        <div class="row">
+
+
+            <footer class="footer1">
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="footer-desc text-center">
+                                    <img src="https://hydra-media.cursecdn.com/lol.gamepedia.com/thumb/d/d4/DreamHacklogo.png/300px-DreamHacklogo.png?version=10d8f1369ce427bb369e9b0ee7eaa8f6" width="82" height="48" alt="">
+                                    <p>
+                                        <small>
+                                            <a href="/" rel="home" title="Community Footer Title">This Site Name</a> is a community focused on gaming<br>for everyone. <a href="/about/">Learn More</a>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <ul class="social">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                            <nav class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                                <div class="input-group input-group-md">
+                                    <input type="text" class="form-control" placeholder="Email Address">
+                                    <span class="input-group-addon">Subscribe</span>
+                                </div>
+                            </nav>
+                            <div class="col-xs-12">
+                                <div class="footer-desc text-center">
+                                    <p id="#footer1_copyrightText">
+                                    &copy; Copyright 2016 CommunitySite, All Rights Reserved
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!--/.row-->
+                    </div> <!--/.container-->
+                </div> <!--/.footer-->
+            </footer>
+
+
+        </div>
 
 
     </div>
