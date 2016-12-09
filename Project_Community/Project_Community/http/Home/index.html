@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--CSS files loaded here-->
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
 
     <!--My CSS file loaded here-->
-    <link href="../Content/css/mystyles.css" rel="stylesheet" />
+    <link href="../../Content/css/mystyles.css" rel="stylesheet" />
 </head>
-<body>
+<body ng-app="myApp">
+
     <!--Start div-->
     <div class="container-fluid">
 
         <!--Navbar menu-->
-        <!--<div class="navbar-wrapper">-->
         <div class="row">
             <div class="container-fluid">
                 <div class="col-md-7 col-centered" id="mainnav">
@@ -34,8 +34,8 @@
                             </div>
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="#" class="">Home</a></li>
-                                    <li><a href="#">Forum</a></li>
+                                    <li class="active"><a href="#/home">Home</a></li>
+                                    <li><a href="#/forum">Forum</a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder 1 <span class="caret"></span></a>
                                         <ul class="dropdown-menu" id="nav_drop_1">
@@ -52,17 +52,12 @@
                                         </ul>
                                     </li>
                                 </ul>
-
-
-
                             </div>
                         </div>
                     </nav>
                 </div>
             </div>
         </div>
-        <!--</div>-->
-
 
         <!--User Login Button Dropdown-->
         <div class="row">
@@ -148,67 +143,20 @@
             </div>
         </div>
 
+
         <!--Main Content Area-->
         <div class="row">
             <div class="container-fluid">
                 <div class="col-md-7 col-centered" id="mainContent">
-                    <h1 id="mainContent_text">Test header</h1>
-                    <blockquote class="blockquote" id="mainContent_text">
-                        <p class="mb-0">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
-                        </p>
-                        <footer id="mainContent_text" class="blockquote-footer">Donald Trump <cite title="Source Title"><b>The Guardian</b></cite></footer>
-                    </blockquote>
-                    <br />
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p class="lead" id="mainContent_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p id="mainContent_text">
-                                Maecenas ut nibh sed nunc viverra congue vel eu felis.
-                                Donec leo justo, viverra non nunc sit amet, venenatis dapibus neque.
-                                Duis dapibus eget orci eget varius. Vestibulum at viverra lorem.
-                                Maecenas neque felis, tempor eget facilisis a, viverra nec neque. Aliquam dictum sapien et ligula pulvinar,
-                                at lobortis est cursus. Donec quis lectus sed tortor feugiat laoreet. Pellentesque condimentum velit ut elit sollicitudin porttitor.
-                                Nam blandit sodales eros. Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
-                                Nam ornare tristique ipsum eu sagittis. Morbi viverra vehicula est ut aliquet.
-                                <br /><br />
+                    <!--Load Partial Pages Here-->
+                    <ng-view></ng-view>
 
-                                Quisque vehicula nisi eu lectus efficitur sodales. Aliquam dui nunc, sagittis at auctor ut, auctor nec odio.
-                                Nam a elit diam. Nunc eget nisl dapibus, tristique tortor eget, cursus velit. Nam rutrum nec dolor vitae vulputate.
-                                Vivamus odio tellus, egestas ac pretium a, vulputate eget turpis. Nunc iaculis vehicula lorem, in viverra sem hendrerit ut.
-                                Fusce eu porttitor tellus, quis fringilla tortor.
-                            </p>
-                            <br />
-
-                        </div>
-
-                        <div class="col-md-6">
-                            <p class="lead" id="mainContent_text">Lor2 ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p id="mainContent_text">
-                                Maecenas ut nibh sed nunc viverra congue vel eu felis.
-                                Donec leo justo, viverra non nunc sit amet, venenatis dapibus neque.
-                                Duis dapibus eget orci eget varius. Vestibulum at viverra lorem.
-                                Maecenas neque felis, tempor eget facilisis a, viverra nec neque. Aliquam dictum sapien et ligula pulvinar,
-                                at lobortis est cursus. Donec quis lectus sed tortor feugiat laoreet. Pellentesque condimentum velit ut elit sollicitudin porttitor.
-                                Nam blandit sodales eros. Sed rhoncus tortor ante, a luctus sapien tempor eu. In gravida neque et nisi porttitor consectetur.
-                                Nam ornare tristique ipsum eu sagittis. Morbi viverra vehicula est ut aliquet.
-                                <br /><br />
-
-                                Quisque vehicula nisi eu lectus efficitur sodales. Aliquam dui nunc, sagittis at auctor ut, auctor nec odio.
-                                Nam a elit diam. Nunc eget nisl dapibus, tristique tortor eget, cursus velit. Nam rutrum nec dolor vitae vulputate.
-                                Vivamus odio tellus, egestas ac pretium a, vulputate eget turpis. Nunc iaculis vehicula lorem, in viverra sem hendrerit ut.
-                                Fusce eu porttitor tellus, quis fringilla tortor.
-                            </p>
-                            <br />
-                        </div>
-
-
-                    </div>
-                </div>
+                </div> <!--End maincontent div-->
             </div>
         </div>
+
+
 
 
         <!--Live Chat-->
@@ -270,7 +218,7 @@
         </section>
 
 
-        <!--FOOTER 1-->
+        <!--FOOTER-->
         <div class="row">
 
 
@@ -306,7 +254,7 @@
                             <div class="col-xs-12">
                                 <div class="footer-desc text-center">
                                     <p id="#footer1_copyrightText">
-                                    &copy; Copyright 2016 CommunitySite, All Rights Reserved
+                                        &copy; Copyright 2016 CommunitySite, All Rights Reserved
                                     </p>
                                 </div>
                             </div>
@@ -319,15 +267,21 @@
         </div>
 
 
-    </div>
+    </div> <!--End Div-->
+
+
     <!--End div-->
     <!--Scripts loaded here-->
-    <script src="../Scripts/jquery-3.1.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/angular.min.js"></script>
+    <script src="../../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    
 
     <!--My script file-->
-    <script src="../Content/js/myjs.js"></script>
+
+    <script src="../../Content/js/myjs.js"></script>
 
 </body>
 </html>

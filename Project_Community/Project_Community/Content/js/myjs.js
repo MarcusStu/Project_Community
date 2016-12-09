@@ -1,14 +1,56 @@
-﻿
+﻿/// <reference path="angular.min.js" />
+
+var app = angular.module("myApp", ["ngRoute"])
+                 .config(function ($routeProvider) {
+
+                     // Routes to specific urls and sends the request to a specific controller
+                     $routeProvider
+                        .when("/home", {
+                            templateUrl: "/http/Home/home.html",
+                            controller: "homeController"
+                        })
+                         .when("/forum", {
+                             templateUrl: "/http/Forum/forum.html",
+                             controller: "forumController"
+                         })
+                         // If the request does not match any of the above, it redirects to /home
+                     .otherwise({
+                         redirectTo: "/home"
+                     })
+                 })
+
+.controller("homeController", function ($scope, $http) {
+    $http.get("Home/Index")
+    //.then(function (response) {
+    //    $scope.persons = response.data;
+    //    console.log(response.data);
+    //})
+})
+
+.controller("forumController", function ($scope, $http) {
+    $http.get("Home/Forum")
+    //.then(function (response) {
+    //    $scope.persons = response.data;
+    //    console.log(response.data);
+    //})
+})
+
+
+
+
+
+
+
 
 // Live Chat
 // Change glyphicon to plus by default, when clicked change to minus
+// Not working properly, clicking the + icon does not change it to minus
 $(function () {
     //$("#plus_icon_chat").unbind('click');
     $("#plus_icon_chat").click(function (e) {
         $(this).toggleClass("glyphicon glyphicon-plus glyphicon glyphicon-minus");
     });
 });
-
 $(function () {
     //$("#chat_panel_click").unbind('click');
     $("#chat_panel_click").click(function (e) {
@@ -16,11 +58,7 @@ $(function () {
     });
 });
 
-
-
-
-
-
+// Charcounter for live chat text box (to avoid overflow)
 /**
  *
  * jquery.charcounter.js version 1.2
@@ -30,7 +68,6 @@ $(function () {
  * http://www.opensource.org/licenses/mit-license.php
  * 
  */
-
 (function ($) {
     /**
 	 * attaches a character counter to each textarea element in the jQuery object
@@ -113,7 +150,9 @@ $(function () {
     };
 
 })(jQuery);
-
 $(function () {
     $(".counted").charCounter(320, { container: "#counter" });
 });
+
+
+
