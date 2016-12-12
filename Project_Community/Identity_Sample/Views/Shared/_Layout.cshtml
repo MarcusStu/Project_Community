@@ -1,44 +1,278 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <title>Community Website</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <!--CSS files loaded here-->
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+
+    <!--My CSS file loaded here-->
+    <link href="../Content/css/mystyles.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <!--Start div-->
+    <div class="container-fluid" id="body_div">
+
+        <!--Navbar menu-->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainnav">
+                    <nav class="navbar navbar-nav col-centered">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" id="nav_logo" href="#">CommunityWebsite</a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Forum", "ForumIndex", "Forum")</li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder 1 <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" id="nav_drop_1">
+                                            <li><a href="#">Placeholder2</a></li>
+                                            <li><a href="#">Placeholder3</a></li>
+                                            <li><a href="#">Placeholder4</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                @Html.Partial("_LoginPartial")
+
+
+
+                            </div>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+
+        <!--User Login Button Dropdown-->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-md-7 col-centered">
+                    <ul class="nav navbar-nav" id="username_button_nav">
+                        <li class="dropdown">
+                            <button id="username_button_nav" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <strong id="username_text">Username</strong>
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="user_dropdown">
+                                <li id="profile_li">
+                                    <div class="navbar-login">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <span class="glyphicon glyphicon-user icon-size"></span>
+                                                </p>
+                                                <p class="text-right" id="username_text">
+                                                    <span id="user_icon" class="glyphicon glyphicon-user">
+                                                    </span><strong> Marcus</strong>
+                                                </p>
+                                                <p class="text-right" id="username_text">
+                                                    <span id="user_icon" class="fa fa-id-card-o">
+                                                    </span><strong>Admin</strong>
+                                                </p>
+
+                                                <!--Settings buttons/links-->
+                                                <p class="text-right">
+                                                    <a id="settings_btn" href="#" class="btn btn-xs btn-block">
+                                                        <span class="fa fa-cog"></span> Account Settings
+                                                    </a>
+                                                </p>
+                                                <p class="text-right">
+                                                    <a id="settings_btn" href="#" class="btn btn-xs btn-block">
+                                                        <span class="fa fa-envelope-open"></span> Messages
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider" id="username_divider"></li>
+
+                                <!--Admin only-->
+                                <li id="profile_li">
+                                    <div class="col-lg-12">
+                                        <p class="text-center">
+                                            <a id="profile_li" href="#" class="btn btn-success btn-block btn-sm">
+                                                <span class="fa fa-adjust"></span> Admin
+                                            </a>
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li id="profile_li">
+                                    <div class="col-lg-12">
+                                        <p class="text-center">
+                                            <a id="profile_btn" href="#" class="btn btn-primary btn-block btn-sm">
+                                                <span class="fa fa-cog"></span> Profile
+                                            </a>
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li id="logout_li">
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p id="logout_btn">
+                                                    <a href="#" class="btn btn-danger btn-block"><span class="fa fa-sign-out"></span> Logout</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Main Content Area-->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
+
+                    <!--Load Partial Pages Here-->
+                    @RenderBody()
+
+                </div> <!--End maincontent div-->
+            </div>
+        </div>
+
+
+
+
+        <!--Live Chat-->
+        <!--Only show if logged in-->
+        <section class="box-position">
+            <div class="container">
+                <div class="col-xs-12 col-md-3 col-sm-4 pull-right hidden-xs">
+                    <!--Message box title-->
+                    <div id="chat_panel_click" class="panel collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#message" aria-expanded="false" aria-controls="message">
+
+                        <div class="panel-heading top-bar" role="tab" id="open-message">
+
+                            <div class="col-md-10 col-xs-10">
+                                <p class="panel-title"><span class="glyphicon glyphicon-comment"></span>  Chat</p>
+                            </div>
+
+                            <div class="col-md-2 col-xs-2">
+                                <a id="plus_icon_hover" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#message" aria-expanded="false" aria-controls="message">
+                                    <span id="plus_icon_chat" class="glyphicon  glyphicon-plus"></span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Message body-->
+
+                    <div id="message" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <form action="#">
+
+                                <div class="form-group ">
+                                    <input type="text" class="form-control" id="name" placeholder="Name" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" type="text" class="form-control counted" id="message" placeholder="Message..." required="required"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" class="form-control btn-success" id="submit" value="Send">
+                                </div>
+
+                                <div class="text-center">
+                                    <h6 class="pull-right" id="counter">320 characters remaining</h6>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!--FOOTER-->
+        <div class="row">
+
+
+            <footer class="footer1">
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="footer-desc text-center">
+                                    <img src="https://hydra-media.cursecdn.com/lol.gamepedia.com/thumb/d/d4/DreamHacklogo.png/300px-DreamHacklogo.png?version=10d8f1369ce427bb369e9b0ee7eaa8f6" width="82" height="48" alt="">
+                                    <p>
+                                        <small>
+                                            <a href="/" rel="home" title="Community Footer Title">This Site Name</a> is a community focused on gaming<br>for everyone. <a href="/about/">Learn More</a>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <ul class="social">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="footer-desc text-center">
+                                    <p id="#footer1_copyrightText">
+                                        &copy; @DateTime.Now.Year CommunitySite, All Rights Reserved
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!--/.row-->
+                    </div> <!--/.container-->
+                </div> <!--/.footer-->
+            </footer>
+
+
+        </div>
+
+    </div> <!--End Div-->
+    <!--Scripts loaded here-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+    <script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!--My script file-->
+
+    <script src="../Content/js/myjs.js"></script>
+
 </body>
 </html>
