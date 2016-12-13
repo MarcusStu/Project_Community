@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace Identity_Assignment.Controllers
 {
     [OverrideAuthorization]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "SuperAdmin")]
     public class AdminController : Controller
     {
         ApplicationDbContext context;

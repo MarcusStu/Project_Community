@@ -18,6 +18,7 @@ body {
 
     .nav > li > a, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu > li > a, .dropdown-menu > li {
         border-bottom: 0px solid transparent;
+        padding-left: 20px;
     }
 
         .nav > li > a:focus, .nav > li > a:hover, .nav .open > a, .nav .open > a:focus, .nav .open > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
@@ -51,9 +52,14 @@ a:hover {
 }
 
 .navbar-login-session {
-    padding: 10px;
+    /*padding: 10px;
     padding-bottom: 0px;
-    padding-top: 0px;
+    padding-top: 0px;*/
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
 }
 
 .icon-size {
@@ -70,6 +76,7 @@ a:hover {
 
 #profile_li {
     border-bottom: 0px;
+    padding-right: 20px;
 }
 
 #username_divider {
@@ -93,7 +100,15 @@ a:hover {
     margin: auto;
     float: right;
     text-align: right;
+    /*font-family: 'Questrial', sans-serif;*/
 }
+
+    #settings_btn .a:hover {
+        background-color: dimgrey;
+        text-decoration: none;
+        color: chartreuse;
+        /*font-family: 'Questrial', sans-serif;*/
+    }
 
 #nav_logo {
     color: chartreuse;
@@ -146,13 +161,13 @@ a:hover {
     position: absolute;
     z-index: 9;*/
     /*position: fixed;*/
-    z-index: 9;
-    float: left;
+    /*z-index: 9;
+    float: left;*/
 }
 
 #user_dropdown {
     /*position: absolute;*/
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     border-radius: 10px;
     background-color: rgba(17, 17, 17,0.98);
 }
@@ -175,13 +190,13 @@ a:hover {
     #username_button_nav {
         /*position: absolute;*/
         /*float: none;*/
-        width: auto;
+        /*width: auto;
         margin-top: 0;
         /*background-color: rgba(17, 17, 17,0.98);*/
         /*border: 1px solid rgba(127, 255, 0, 0.5);*/
-        border-radius: 5px;
+        /*border-radius: 5px;
         -webkit-box-shadow: none;
-        box-shadow: none;
+        box-shadow: none;*/
     }
 }
 
@@ -200,11 +215,9 @@ a:hover {
 }
 
 #body_div {
-
 }
 
 #login_div {
-
 }
 
 
@@ -404,4 +417,18 @@ li {
 
 #copyright_div {
     text-align: center;
+}
+
+@media (min-width: 992px) {
+    .container-fluid > .navbar-collapse {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+
+/*UserName Nav Dropdown*/
+
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    overflow-y: initial;
 }

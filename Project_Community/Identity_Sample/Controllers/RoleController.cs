@@ -11,7 +11,7 @@ using Identity_Sample.Controllers;
 namespace Identity_Sample.Controllers
 {
     [OverrideAuthorization]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "SuperAdmin")]
     public class RoleController : Controller
     {
         ApplicationDbContext context;
