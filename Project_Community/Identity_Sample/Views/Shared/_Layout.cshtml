@@ -7,6 +7,7 @@
 
     <!--CSS files loaded here-->
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/navbar-fixed-side.css" rel="stylesheet" />
     <link href="../Content/font-awesome.min.css" rel="stylesheet" />
 
     <!--My CSS file loaded here-->
@@ -14,6 +15,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @using Microsoft.AspNet.Identity
+    @using Identity_Sample.Models
 
 </head>
 <body>
@@ -52,11 +54,11 @@
                                                                 </p>
                                                                 <p class="text-right" id="username_text">
                                                                     <span id="user_icon" class="glyphicon glyphicon-user">
-                                                                    </span><strong> Marcus</strong>
+                                                                    </span><strong> @User.Identity.Name</strong>
                                                                 </p>
                                                                 <p class="text-right" id="username_text">
                                                                     <span id="user_icon" class="fa fa-id-card-o">
-                                                                    </span><strong>Admin</strong>
+                                                                    </span><strong> Role</strong>
                                                                 </p>
 
                                                                 <!--Settings buttons/links-->
@@ -171,6 +173,10 @@
                                             <li><a href="#">Placeholder4</a></li>
                                         </ul>
                                     </li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Media</a></li>
+                                    <li><a href="#">Test</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -182,6 +188,12 @@
         <!--Main Content Area-->
         <div class="row">
             <div class="container-fluid">
+
+                <!--News Feed Here-->
+                <div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
+                    @Html.Partial("~/Views/News/Index.cshtml")
+                </div>
+
                 <div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
 
                     <!--Load Partial Pages Here-->
@@ -305,7 +317,6 @@
     <script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
     <!--My script file-->
-
     <script src="../Content/js/myjs.js"></script>
 
 </body>

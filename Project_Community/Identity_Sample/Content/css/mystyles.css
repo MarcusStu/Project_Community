@@ -432,3 +432,9 @@ li {
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
     overflow-y: initial;
 }
+
+
+
+#newsPic {
+    display: inline-block;
+}
