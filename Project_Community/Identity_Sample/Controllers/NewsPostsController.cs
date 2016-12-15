@@ -44,6 +44,7 @@ namespace Identity_Sample.Controllers
             //db.ID = default(int);
             if (ModelState.IsValid)
             {
+                cmt.Author = User.Identity.Name;
                 cmt.PublishDate = DateTime.Now;
                 db.Comments.Add(cmt);
                 db.SaveChanges();
@@ -59,6 +60,7 @@ namespace Identity_Sample.Controllers
         // GET: NewsPosts/Create
         public ActionResult Create()
         {
+            ViewBag.UserName = User.Identity.Name;
             return View();
         }
 
@@ -67,10 +69,12 @@ namespace Identity_Sample.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Text,PublishDate,Author")] NewsPost newsPost)
+        public ActionResult Create([Bind(Include = "ID,Title,Text,Author")] NewsPost newsPost)
         {
             if (ModelState.IsValid)
             {
+                newsPost.Author = User.Identity.Name;
+                newsPost.PublishDate = DateTime.Now;
                 db.NewsPosts.Add(newsPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");

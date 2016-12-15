@@ -84,7 +84,7 @@ namespace Identity_Sample.Controllers
             {
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "NewsPosts", new { id = comment.NewsPostID });
             }
             return View(comment);
         }
@@ -112,7 +112,7 @@ namespace Identity_Sample.Controllers
             Comment comment = db.Comments.Find(id);
             db.Comments.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "NewsPosts", new { id = comment.NewsPostID });
         }
 
         protected override void Dispose(bool disposing)

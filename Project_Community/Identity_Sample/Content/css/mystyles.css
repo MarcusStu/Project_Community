@@ -439,9 +439,33 @@ li {
     display: inline-block;
 }
 
+#news_picture_div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .navbar-nav {
     margin: 0 auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Comment Section*/
 
@@ -451,9 +475,16 @@ li {
     border-radius: 10px;
     padding-left: 5px;
     padding-right: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 #comment_author_field {
+    background-color: darkgray;
+    border-color: darkgray;
+}
+
+#comment_disabled_textarea {
     background-color: darkgray;
     border-color: darkgray;
 }
@@ -465,4 +496,43 @@ li {
     border-top: 1px solid black;
     margin: 1em 0;
     padding: 0;
+}
+
+#comment_main_header {
+    margin-top: 0px;
+}
+
+#comment_navigate_back_btn {
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+#news_post {
+    background: rgba(0,0,0,0.4);
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+#comment_text_textarea {
+    box-shadow: 10px #333;
+    width: inherit;
+    vertical-align: middle;
+    text-decoration: none;
+    word-wrap: break-word;
+    overflow: hidden !important;
+    /* text-overflow: ellipsis; */
+}
+
+#comment_info_text {
+    color: darkorange;
+}
+
+#news_text_area {
+    overflow: hidden !important;
+    /* text-overflow: ellipsis; */
+    height: 64px;
+}
+
+#admin_details_div {
+    margin-top: 10px;
 }

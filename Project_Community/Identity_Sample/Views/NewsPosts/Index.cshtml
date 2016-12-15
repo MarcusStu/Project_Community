@@ -8,34 +8,104 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h2>Index</h2>
+            @*<h2>News Feed</h2>*@
 
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Text)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PublishDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Author)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Comments)
-                    </th>
-                    <th></th>
-                </tr>
+            @*Admin stuff*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("SuperAdmin"))
+                {
+                    <div id="admin_details_div">
+                        @Html.ActionLink("New Post", "Create", null, new { @class = "btn btn-success btn-xs" })
+                    </div>
+                }
+            }
+            <br />
+
+            <h1>
+                News Feed
+            </h1>
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-12" id="news_post">
+                    <div class="row">
+
+                        @*Title*@
+                        <div class="col-md-12 post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <strong><a href="#" class="post-title">@item.Title</a></strong>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*Username,Date,*@
+                        <div class="col-md-12 post-header-line">
+                            @*<div class="row">*@
+                            <span class="glyphicon glyphicon-user"></span> by <a href="#">@item.Author</a> | <span class="glyphicon glyphicon-calendar">
+                            </span><a id="time_news" title="short time format here"> @item.PublishDate | </a><span class="glyphicon glyphicon-comment"></span><a href="@Url.Action("Details", "NewsPosts", new { id = item.ID })">
+                                @if (item.Comments == null || item.Comments.Count == 0)
+                                {
+                                    <text>0</text>
+                                }
+                                else
+                                {
+                                    string commentValue = item.Comments.Count.ToString();
+
+                                    @commentValue
+                                }
+                                Comments
+                            </a>
+                            @*</div>*@
+                        </div>
+
+                        @*Admin buttons*@
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("SuperAdmin"))
+                            {
+                                <div class="col-md-pull-12">
+                                    @*<div class="row">*@
+                                    <!--Admin Menu-->
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning btn-xs btn-block" });
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-xs btn-block" });*@
+                                    <a id="admin_buttons_news" class="btn btn-xs btn-warning" href="@Url.Action("Edit", "NewsPosts", new { id = item.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                                    <a id="admin_buttons_news" class="btn btn-xs btn-danger" href="@Url.Action("Delete", "NewsPosts", new { id = item.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
+
+                                    @*</div>*@
+                                </div>
+                            }
+                        }
+
+
+                        <div class="post-content">
+                            <div class="col-md-3" id="news_picture_div">
+                                <a href="#">
+                                    <img width="260" height="140" src="http://www.dreamhack.se/dhs15/files/2015/04/DHOpen-SLASKLOGO-2015.png" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <p id="news_text_area">
+                                    @item.Text
+                                </p>
+                                <p>
+                                    <a class="btn btn-read-more" href="@Url.Action("Details", "NewsPosts", new { id = item.ID })"><span class="fa fa-info"></span> Read More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <br />
+                    </div> <!--End Row_Div-->
+                </div> <!--News_Post Div End-->
+            }
 
 
 
-                @foreach (var item in Model)
+
+
+            @*@foreach (var item in Model)
                 {
                     <tr>
                         <td>
@@ -60,17 +130,109 @@
                                 string commentValue = item.Comments.Count.ToString();
 
                                 @Html.DisplayFor(modelItem => commentValue)
+                            }*@
+            @*</td>
+                <td>
+                    @Html.ActionLink("More Info", "Details", new { id = item.ID }, new { @class = "btn btn-primary btn-xs btn-block" })*@
+
+            @*Admin stuff*@
+            @*@if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("SuperAdmin"))
+                    {*@
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning btn-xs btn-block" });*@
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-xs btn-block" });*@
+            @*}
                             }
                         </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
                     </tr>
-                }
+                }*@
 
-            </table>
+            @*</table>*@
         </div>
+
     </div>
 </div>
+
+
+
+<style>
+    body {
+        /*margin-top: 50px;*/
+    }
+
+    #admin_buttons_news {
+        margin-top: 5px;
+        margin-right: 5px;
+        float: right;
+    }
+
+    #time_news {
+        color: #FFF;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    a:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #FFF;
+    }
+
+    a {
+        color: chartreuse;
+    }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+    .btn {
+        transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+    }
+
+    .btn-read-more {
+        padding: 5px;
+        text-align: center;
+        border-radius: 0px;
+        display: inline-block;
+        border: 2px solid chartreuse;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        color: chartreuse;
+    }
+
+        .btn-read-more:hover {
+            color: #393939;
+            background: chartreuse;
+        }
+
+    .post {
+        /*border-bottom: 1px solid #DDD;*/
+    }
+
+    .post-title {
+        color: chartreuse;
+    }
+
+    .post .glyphicon {
+        margin-right: 5px;
+    }
+
+    .post-header-line {
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
+        padding: 5px 0px 5px 15px;
+        font-size: 12px;
+    }
+
+    .post-content {
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+</style>

@@ -8,7 +8,22 @@
 
 <div>
     <h4>NewsPost</h4>
+
+
+    @*Admin stuff*@
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("SuperAdmin"))
+        {
+            <div id="admin_details_div">
+                @Html.ActionLink("Edit News Post", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning btn-xs" })
+
+                @Html.ActionLink("Delete News Post", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger btn-xs" })
+            </div>
+        }
+    }
     <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -64,35 +79,94 @@
 
 <br />
 
-<div id="comment_div">
-    <h3>Comments</h3>
+<div class="col-md-12">
+    <div class="row">
+        <div id="comment_div">
+            <h3 id="comment_main_header">Comments</h3>
+            @if (Model.Comments == null || Model.Comments.Count == 0)
+            {
+                <small>
+                    <text>
+                        There are no comments for this news post yet.
+                        <br /> Be the first one to comment!
+                    </text>
+                </small>
+            }
 
-    @foreach (var item in Model.Comments)
-    {
-        <br /> @item.Text <br />
-        <small><span class="fa fa-clock-o"></span><text> Published on: </text> @item.PublishDate</small>
-        <br />
-        <small><span class="fa fa-user"></span><text> Author: </text> @item.Author</small>
-        <hr id="comment_hr" />
-    }
+            @foreach (var item in Model.Comments)
+            {
+                <div class="">
+                    <small id="comment_info_text"><span class="fa fa-hashtag"></span> @item.ID</small>
+                    <br />
+                    <small id="comment_info_text"><span class="fa fa-clock-o"></span><text> Published on: </text> @item.PublishDate</small>
+                    <br />
+                    <small id="comment_info_text"><span class="fa fa-user"></span><text> Author: </text> @item.Author</small>
+                    <br />
 
+                    @*Admin buttons*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("SuperAdmin"))
+                        {
+                            <div class="">
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Comments", new { id = item.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Edit", "Comments", new { id = item.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                            </div>
+                        }
+                    }
+
+                    <br />
+                    <p id="comment_text_textarea">@item.Text</p>
+                    <hr id="comment_hr" />
+                </div>
+            }
+
+        </div>
+
+
+        @*Add new comment*@
+        @*Check if user is logged in*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            using (Html.BeginForm("detailsPost", "NewsPosts"))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+
+                    @Html.Partial("_CreateComment", new Identity_Sample.Models.Comment { NewsPostID = Model.ID })
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input type="submit" value="Post" class="form-control btn btn-success btn-group" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        }
+        else
+        {
+            <fieldset>
+                <div class="form-horizontal">
+                    <hr />
+                    <h4>Comment</h4>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control", @disabled="disabled", @rows="4" } })*@
+                            <textarea id="comment_disabled_textarea" class="form-control" disabled="disabled" rows="4">Please register or login to comment!</textarea>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        }
+
+    </div>
 </div>
 
-@*Add new comment*@
-@using (Html.BeginForm("detailsPost", "NewsPosts"))
-{
-    @Html.AntiForgeryToken()
-    <fieldset>
-        
-        @Html.Partial("_CreateComment", new Identity_Sample.Models.Comment { NewsPostID = Model.ID })
-
-        <p>
-            <input type="submit" value="Create" class="btn btn-default" />
-        </p>
-    </fieldset>
-}
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div id="comment_navigate_back_btn">
+    <br />
+    <a class="btn btn-primary" href="@Url.Action("Index", new { id = UrlParameter.Optional })"><span class="fa fa-arrow-left"></span> Back to News List</a>
+    @*@Html.ActionLink("Back to News List", "Index", null, new { @Class = "btn btn-primary btn-md" })*@
+</div>
