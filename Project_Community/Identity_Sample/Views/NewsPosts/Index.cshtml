@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Identity_Sample.Models.NewsPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid col-centered">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h2>Index</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Text)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PublishDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Author)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Comments)
+                    </th>
+                    <th></th>
+                </tr>
+
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Text)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublishDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td>
+                            @if (item.Comments == null || item.Comments.Count == 0)
+                            {
+                                <text>None</text>
+                            }
+                            else
+                            {
+                                string commentValue = item.Comments.Count.ToString();
+
+                                @Html.DisplayFor(modelItem => commentValue)
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

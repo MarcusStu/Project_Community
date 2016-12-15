@@ -1,0 +1,98 @@
+﻿@model Identity_Sample.Models.NewsPost
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NewsPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @if (Model.Comments == null || Model.Comments.Count == 0)
+            {
+                <text>None</text>
+            }
+            else
+            {
+                string commentValue = Model.Comments.Count.ToString();
+
+                @Html.DisplayFor(modelItem => commentValue)
+            }
+        </dd>
+
+    </dl>
+</div>
+
+<br />
+
+<div id="comment_div">
+    <h3>Comments</h3>
+
+    @foreach (var item in Model.Comments)
+    {
+        <br /> @item.Text <br />
+        <small><span class="fa fa-clock-o"></span><text> Published on: </text> @item.PublishDate</small>
+        <br />
+        <small><span class="fa fa-user"></span><text> Author: </text> @item.Author</small>
+        <hr id="comment_hr" />
+    }
+
+</div>
+
+@*Add new comment*@
+@using (Html.BeginForm("detailsPost", "NewsPosts"))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        
+        @Html.Partial("_CreateComment", new Identity_Sample.Models.Comment { NewsPostID = Model.ID })
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-default" />
+        </p>
+    </fieldset>
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
