@@ -232,6 +232,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\62728388.jpg" />
+    <Content Include="Content\images\marcom_logo.png" />
     <Content Include="Content\js\myjs.js" />
     <Content Include="Content\navbar-fixed-side.css" />
     <Content Include="favicon.ico" />
