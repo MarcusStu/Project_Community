@@ -4,81 +4,81 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="container-fluid col-centered">
+    <div class="row">
+        <div class="col-md-12">
+            <br />
 
-<div>
-    <h4>NewsPost</h4>
 
+            <div class="col-md-12" id="news_post">
+                @*<div class="row">
+                    @*<div>*@
+                        @*Title*@
+                        <div class="col-md-12 post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <strong><a href="#" class="post-title">@Model.Title</a></strong>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
 
-    @*Admin stuff*@
-    @if (User.Identity.IsAuthenticated)
-    {
-        if (User.IsInRole("SuperAdmin"))
-        {
-            <div id="admin_details_div">
-                @Html.ActionLink("Edit News Post", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning btn-xs" })
+                        @*Username,Date,*@
+                        <div class="col-md-12 post-header-line">
+                            @*<div class="row">*@
+                            <span class="glyphicon glyphicon-user"></span> by <a href="#">@Model.Author</a> | <span class="glyphicon glyphicon-calendar">
+                            </span><a id="time_news" title="short time format here"> @Model.PublishDate | </a><span class="glyphicon glyphicon-comment"></span><a href="#comment_div">
+                                @if (Model.Comments == null || Model.Comments.Count == 0)
+                                {
+                                    <text>0</text>
+                                }
+                                else
+                                {
+                                    string commentValue = Model.Comments.Count.ToString();
 
-                @Html.ActionLink("Delete News Post", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger btn-xs" })
+                                    @commentValue
+                                }
+                                Comments
+                            </a>
+                            @*</div>*@
+                        </div>
+
+                        @*Admin buttons*@
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("SuperAdmin"))
+                            {
+                                <div class="col-md-pull-12">
+                                    <!--Admin Menu-->
+                                    <a id="admin_buttons_news" class="btn btn-xs btn-warning" href="@Url.Action("Edit", "NewsPosts", new { id = Model.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                                    <a id="admin_buttons_news" class="btn btn-xs btn-danger" href="@Url.Action("Delete", "NewsPosts", new { id = Model.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
+                                </div>
+                            }
+                        }
+
+                        <div class="post-content">
+                            <div class="col-md-3" id="news_picture_div">
+                                <a href="#">
+                                    <img width="260" height="140" src="http://www.dreamhack.se/dhs15/files/2015/04/DHOpen-SLASKLOGO-2015.png" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <p id="">
+                                    @Model.Text
+                                </p>
+                            </div>
+                        </div>
+                    @**</div>*@
+
+                    <br />
+
+                </div>
             </div>
-        }
-    }
-    <hr />
+        </div>
+    </div>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PublishDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PublishDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Comments)
-        </dt>
-
-        <dd>
-            @if (Model.Comments == null || Model.Comments.Count == 0)
-            {
-                <text>None</text>
-            }
-            else
-            {
-                string commentValue = Model.Comments.Count.ToString();
-
-                @Html.DisplayFor(modelItem => commentValue)
-            }
-        </dd>
-
-    </dl>
-</div>
-
-<br />
-
+@*Comment Section*@
 <div class="col-md-12">
     <div class="row">
         <div id="comment_div">
@@ -92,15 +92,17 @@
                     </text>
                 </small>
             }
+            @*Adds a unique number to each comment*@
+            @{int commentCounter = 1;}
 
             @foreach (var item in Model.Comments)
             {
                 <div class="">
-                    <small id="comment_info_text"><span class="fa fa-hashtag"></span> @item.ID</small>
+                    <small id="comment_info_text"><span class="fa fa-hashtag"></span><text id="commentCounter_text"> @(commentCounter++)</text></small>
                     <br />
-                    <small id="comment_info_text"><span class="fa fa-clock-o"></span><text> Published on: </text> @item.PublishDate</small>
+                    <small id="comment_info_text"><span class="fa fa-clock-o"></span><text> Published on: </text><text id="publishDate_text"> @item.PublishDate</text></small>
                     <br />
-                    <small id="comment_info_text"><span class="fa fa-user"></span><text> Author: </text> @item.Author</small>
+                    <small id="comment_info_text"><span class="fa fa-user"></span><text> Author: </text><a href="#"> @item.Author</a></small>
                     <br />
 
                     @*Admin buttons*@
@@ -170,3 +172,87 @@
     <a class="btn btn-primary" href="@Url.Action("Index", new { id = UrlParameter.Optional })"><span class="fa fa-arrow-left"></span> Back to News List</a>
     @*@Html.ActionLink("Back to News List", "Index", null, new { @Class = "btn btn-primary btn-md" })*@
 </div>
+
+
+
+
+<style>
+    body {
+        /*margin-top: 50px;*/
+    }
+
+    #admin_buttons_news {
+        margin-top: 5px;
+        margin-right: 5px;
+        float: right;
+    }
+
+    #time_news {
+        color: #FFF;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    a:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #FFF;
+    }
+
+    a {
+        color: chartreuse;
+    }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+    .btn {
+        transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+    }
+
+    .btn-read-more {
+        padding: 5px;
+        text-align: center;
+        border-radius: 0px;
+        display: inline-block;
+        border: 2px solid chartreuse;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        color: chartreuse;
+    }
+
+        .btn-read-more:hover {
+            color: #393939;
+            background: chartreuse;
+        }
+
+    .post {
+        /*border-bottom: 1px solid #DDD;*/
+    }
+
+    .post-title {
+        color: chartreuse;
+    }
+
+    .post .glyphicon {
+        margin-right: 5px;
+    }
+
+    .post-header-line {
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
+        padding: 5px 0px 5px 15px;
+        font-size: 12px;
+    }
+
+    .post-content {
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+</style>

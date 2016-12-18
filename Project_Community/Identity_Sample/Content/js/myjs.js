@@ -1,39 +1,39 @@
-﻿/// <reference path="angular.min.js" />
+﻿///// <reference path="angular.min.js" />
 
-var app = angular.module("myApp", ["ngRoute"])
-                 .config(function ($routeProvider) {
+//var app = angular.module("myApp", ["ngRoute"])
+//                 .config(function ($routeProvider) {
 
-                     // Routes to specific urls and sends the request to a specific controller
-                     $routeProvider
-                        .when("/home", {
-                            templateUrl: "/http/Home/home.html",
-                            controller: "homeController"
-                        })
-                         .when("/forum", {
-                             templateUrl: "/http/Forum/forum.html",
-                             controller: "forumController"
-                         })
-                         // If the request does not match any of the above, it redirects to /home
-                     .otherwise({
-                         redirectTo: "/home"
-                     })
-                 })
+//                     // Routes to specific urls and sends the request to a specific controller
+//                     $routeProvider
+//                        .when("/home", {
+//                            templateUrl: "/http/Home/home.html",
+//                            controller: "homeController"
+//                        })
+//                         .when("/forum", {
+//                             templateUrl: "/http/Forum/forum.html",
+//                             controller: "forumController"
+//                         })
+//                         // If the request does not match any of the above, it redirects to /home
+//                     .otherwise({
+//                         redirectTo: "/home"
+//                     })
+//                 })
 
-.controller("homeController", function ($scope, $http) {
-    $http.get("Home/Index")
-    //.then(function (response) {
-    //    $scope.persons = response.data;
-    //    console.log(response.data);
-    //})
-})
+//.controller("homeController", function ($scope, $http) {
+//    $http.get("Home/Index")
+//    //.then(function (response) {
+//    //    $scope.persons = response.data;
+//    //    console.log(response.data);
+//    //})
+//})
 
-.controller("forumController", function ($scope, $http) {
-    $http.get("Home/Forum")
-    //.then(function (response) {
-    //    $scope.persons = response.data;
-    //    console.log(response.data);
-    //})
-})
+//.controller("forumController", function ($scope, $http) {
+//    $http.get("Home/Forum")
+//    //.then(function (response) {
+//    //    $scope.persons = response.data;
+//    //    console.log(response.data);
+//    //})
+//})
 
 
 
@@ -150,9 +150,97 @@ $(function () {
     };
 
 })(jQuery);
+
 $(function () {
     $(".counted").charCounter(320, { container: "#counter" });
 });
 
+$(function () {
+    $(".counted-comment").charCounter(100, { container: "#counter-comment" });
+});
+
+$(function () {
+    $(".counted-news").charCounter(1000, { container: "#counter-news" });
+});
 
 
+
+
+
+
+// Div linking offset 50px
+(function (document, history, location) {
+    var HISTORY_SUPPORT = !!(history && history.pushState);
+
+    var anchorScrolls = {
+        ANCHOR_REGEX: /^#[^ ]+$/,
+        OFFSET_HEIGHT_PX: 50,
+
+        /**
+         * Establish events, and fix initial scroll position if a hash is provided.
+         */
+        init: function () {
+            this.scrollToCurrent();
+            $(window).on('hashchange', $.proxy(this, 'scrollToCurrent'));
+            $('body').on('click', 'a', $.proxy(this, 'delegateAnchors'));
+        },
+
+        /**
+         * Return the offset amount to deduct from the normal scroll position.
+         * Modify as appropriate to allow for dynamic calculations
+         */
+        getFixedOffset: function () {
+            return this.OFFSET_HEIGHT_PX;
+        },
+
+        /**
+         * If the provided href is an anchor which resolves to an element on the
+         * page, scroll to it.
+         * @param  {String} href
+         * @return {Boolean} - Was the href an anchor.
+         */
+        scrollIfAnchor: function (href, pushToHistory) {
+            var match, anchorOffset;
+
+            if (!this.ANCHOR_REGEX.test(href)) {
+                return false;
+            }
+
+            match = document.getElementById(href.slice(1));
+
+            if (match) {
+                anchorOffset = $(match).offset().top - this.getFixedOffset();
+                $('html, body').animate({ scrollTop: anchorOffset });
+
+                // Add the state to history as-per normal anchor links
+                if (HISTORY_SUPPORT && pushToHistory) {
+                    history.pushState({}, document.title, location.pathname + href);
+                }
+            }
+
+            return !!match;
+        },
+
+        /**
+         * Attempt to scroll to the current location's hash.
+         */
+        scrollToCurrent: function (e) {
+            if (this.scrollIfAnchor(window.location.hash) && e) {
+                e.preventDefault();
+            }
+        },
+
+        /**
+         * If the click event's target was an anchor, fix the scroll position.
+         */
+        delegateAnchors: function (e) {
+            var elem = e.target;
+
+            if (this.scrollIfAnchor(elem.getAttribute('href'), true)) {
+                e.preventDefault();
+            }
+        }
+    };
+
+    $(document).ready($.proxy(anchorScrolls, 'init'));
+})(window.document, window.history, window.location);

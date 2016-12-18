@@ -6,34 +6,37 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @*<div class="form-group">
         <div class="col-md-10">*@
-            @Html.HiddenFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-        @*</div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-10">*@
-            @Html.HiddenFor(model => model.NewsPostID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NewsPostID, "", new { @class = "text-danger" })
-        @*</div>
-    </div>*@
+    @Html.HiddenFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+    @*</div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">*@
+    @Html.HiddenFor(model => model.NewsPostID, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.NewsPostID, "", new { @class = "text-danger" })
+    @*</div>
+        </div>*@
 
     <div class="form-group">
         @*@Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })*@
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control", @rows="4" } })
+            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control counted-comment", @rows = "4", @required = "required", @maxlenght = "100", @placeholder = "Max lenght: 100 characters!" } })
             @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10">
+            <h6 class="" id="counter-comment">100 characters remaining</h6>
         </div>
     </div>
 
     @*<div class="form-group">*@
-        @*@Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })*@
-        @*<div class="col-md-10">*@
-            @Html.HiddenFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", @Value= @ViewBag.UserName, @readonly = "readonly", id = "comment_author_field" } })
-            @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
-        @*</div>
-    </div>*@
+    @*@Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    @*<div class="col-md-10">*@
+    @Html.HiddenFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.UserName, @readonly = "readonly", id = "comment_author_field" } })
+    @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+    @*</div>
+        </div>*@
 
-    
+
 
 </div>
 

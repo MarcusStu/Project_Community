@@ -6,6 +6,20 @@ body {
     color: #FFF;
 }
 
+    a:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #FFF;
+    }
+
+    a {
+        color: chartreuse;
+    }
+
+        a:visited {
+            text-decoration: none;
+        }
+
 .navbar {
     background: rgba(0,0,0,0.98);
 }
@@ -249,7 +263,9 @@ li {
 }
 
 .footer1 a {
-    color: #DDD;
+    color: chartreuse;
+    text-decoration: none;
+    background-color: transparent;
 }
 
     .footer1 a:hover,
@@ -535,6 +551,13 @@ li {
 
 #admin_details_div {
     margin-top: 10px;
+}
+
+#commentCounter_text {
+}
+
+#publishDate_text {
+    color: #FFF;
 }
 
 

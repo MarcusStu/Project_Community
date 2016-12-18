@@ -26,7 +26,7 @@
                 News Feed
             </h1>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.OrderByDescending(item => item.PublishDate))
             {
                 <div class="col-md-12" id="news_post">
                     <div class="row">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        @*Username,Date,*@
+                        @*Author,PublishDate,Comments*@
                         <div class="col-md-12 post-header-line">
                             @*<div class="row">*@
                             <span class="glyphicon glyphicon-user"></span> by <a href="#">@item.Author</a> | <span class="glyphicon glyphicon-calendar">
@@ -101,54 +101,6 @@
                 </div> <!--News_Post Div End-->
             }
 
-
-
-
-
-            @*@foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Text)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PublishDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Author)
-                        </td>
-                        <td>
-                            @if (item.Comments == null || item.Comments.Count == 0)
-                            {
-                                <text>None</text>
-                            }
-                            else
-                            {
-                                string commentValue = item.Comments.Count.ToString();
-
-                                @Html.DisplayFor(modelItem => commentValue)
-                            }*@
-            @*</td>
-                <td>
-                    @Html.ActionLink("More Info", "Details", new { id = item.ID }, new { @class = "btn btn-primary btn-xs btn-block" })*@
-
-            @*Admin stuff*@
-            @*@if (User.Identity.IsAuthenticated)
-                {
-                    if (User.IsInRole("SuperAdmin"))
-                    {*@
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning btn-xs btn-block" });*@
-            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-xs btn-block" });*@
-            @*}
-                            }
-                        </td>
-                    </tr>
-                }*@
-
-            @*</table>*@
         </div>
 
     </div>
