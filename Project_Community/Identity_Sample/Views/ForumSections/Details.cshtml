@@ -1,0 +1,150 @@
+﻿@model Identity_Sample.Models.ForumSection
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Forum</h2>
+
+<div>
+    <h4>
+        @Model.Title @*Admin view only*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("SuperAdmin"))
+            {
+                <text>(section added by: @Model.addedBy)</text>
+            }
+        }
+    </h4>
+
+
+    <hr />
+</div>
+
+
+
+@*Thread Section*@
+<div class="col-md-12">
+    <div class="row">
+        <div id="thread_div">
+            <h3 id="thread_main_header">Threads</h3>
+            @if (Model.ForumThreads == null || Model.ForumThreads.Count == 0)
+            {
+                <small>
+                    <text>
+                        There are no threads for this section yet.
+                        <br /> Be the first one to create a thread!
+                    </text>
+                </small>
+            }
+
+            @foreach (var item in Model.ForumThreads.OrderByDescending(item => item.PublishDate))
+            {
+                <div id="thread_div_threads" class="">
+                    <small><a href="@Url.Action("Details", "ForumThreads", new { id = item.ID })">@item.Title</a> | </small>
+                    <small id="thread_info_text"><span class="fa fa-clock-o"></span><text> Published on: </text><text id="publishDate_text"> @item.PublishDate | </text></small>
+                    <small id="thread_info_text"><span class="fa fa-user"></span><text> Author: </text><a href="#"> @item.Author</a> | </small>
+                    <small>
+                        <span class="glyphicon glyphicon-comment"></span><text id="forum_post_number">
+                            @if (item.ForumPosts == null || item.ForumPosts.Count == 0)
+                            {
+                                <text>0</text>
+                            }
+                            else
+                            {
+                                string postValue = item.ForumPosts.Count.ToString();
+
+                                @postValue
+                            }
+                        </text>
+                            Posts
+                    </small>
+
+
+
+                    @*Admin buttons*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="btn btn-danger btn-xs btn-group" href="@Url.Action("Delete", "ForumThreads", new { id = item.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
+                                <a class="btn btn-warning btn-xs btn-group" href="@Url.Action("Edit", "ForumThreads", new { id = item.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                        }
+                    }
+                    @*<hr id="thread_hr" />*@
+                </div>
+                @*<br />*@
+            }
+
+        </div>
+
+
+        <br /><br />
+        <input class="btn btn-primary" type='button' id='hideshow' value='hide/show'>
+        <div id="thread_content">
+            @*Add new thread*@
+            @*Check if user is logged in*@
+            @if (User.Identity.IsAuthenticated)
+            {
+
+                using (Html.BeginForm("CreateThread", "ForumSections"))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+
+                        @Html.Partial("_CreateThread", new Identity_Sample.Models.ForumThread { ForumSectionID = Model.ID })
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="submit" value="Post" class="form-control btn btn-success btn-group" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            }
+            else
+            {
+                <fieldset>
+                    <div class="form-horizontal">
+                        <hr />
+                        <h4>New Thread</h4>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @*@Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control", @disabled="disabled", @rows="4" } })*@
+                                <textarea id="thread_disabled_textarea" class="form-control" disabled="disabled" rows="4">Please register or login to create a new thread!</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+</div>
+<div id="comment_navigate_back_btn">
+    <br />
+    <a class="btn btn-primary" href="@Url.Action("Index", new { id = UrlParameter.Optional })"><span class="fa fa-arrow-left"></span> Back to Forum List</a>
+    @*@Html.ActionLink("Back to News List", "Index", null, new { @Class = "btn btn-primary btn-md" })*@
+</div>
+
+<style>
+     a:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #FFF;
+    }
+
+    a {
+        color: chartreuse;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+        a:visited {
+            text-decoration: none;
+        }
+</style>

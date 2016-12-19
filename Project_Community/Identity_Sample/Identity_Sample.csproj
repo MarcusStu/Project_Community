@@ -199,20 +199,26 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\ForumPostsController.cs" />
+    <Compile Include="Controllers\ForumSectionsController.cs" />
+    <Compile Include="Controllers\ForumThreadsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NewsPostsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
+    <Compile Include="Migrations\ForumContext\Configuration.cs" />
     <Compile Include="Migrations\MyDbContext\Configuration.cs" />
     <Compile Include="Migrations\NewsContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\ForumContext.cs" />
+    <Compile Include="Models\ForumPost.cs" />
+    <Compile Include="Models\ForumSection.cs" />
+    <Compile Include="Models\ForumThread.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MyDbContext.cs" />
@@ -320,7 +326,6 @@
     <Content Include="Views\Role\DeleteRoleFromUser.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Assign.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\NewsPosts\Create.cshtml" />
     <Content Include="Views\NewsPosts\Delete.cshtml" />
     <Content Include="Views\NewsPosts\Details.cshtml" />
@@ -332,10 +337,26 @@
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\NewsPosts\_CreateComment.cshtml" />
+    <Content Include="Views\ForumSections\Create.cshtml" />
+    <Content Include="Views\ForumSections\Delete.cshtml" />
+    <Content Include="Views\ForumSections\Details.cshtml" />
+    <Content Include="Views\ForumSections\Edit.cshtml" />
+    <Content Include="Views\ForumSections\Index.cshtml" />
+    <Content Include="Views\ForumThreads\Create.cshtml" />
+    <Content Include="Views\ForumThreads\Delete.cshtml" />
+    <Content Include="Views\ForumThreads\Details.cshtml" />
+    <Content Include="Views\ForumThreads\Edit.cshtml" />
+    <Content Include="Views\ForumThreads\Index.cshtml" />
+    <Content Include="Views\ForumPosts\Create.cshtml" />
+    <Content Include="Views\ForumPosts\Delete.cshtml" />
+    <Content Include="Views\ForumPosts\Details.cshtml" />
+    <Content Include="Views\ForumPosts\Edit.cshtml" />
+    <Content Include="Views\ForumPosts\Index.cshtml" />
+    <Content Include="Views\ForumSections\_CreateThread.cshtml" />
+    <Content Include="Views\ForumThreads\_CreatePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Forum\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

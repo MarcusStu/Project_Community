@@ -244,3 +244,11 @@ $(function () {
 
     $(document).ready($.proxy(anchorScrolls, 'init'));
 })(window.document, window.history, window.location);
+
+
+// Hide/show button for Create Thread
+//jQuery(document).ready(function () {
+//    jQuery('#hideshow').live('click', function (event) {
+//        jQuery('#thread_content').toggle('show');
+//    });
+//});

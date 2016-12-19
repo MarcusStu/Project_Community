@@ -1,0 +1,305 @@
+﻿@model Identity_Sample.Models.ForumThread
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2></h2>
+
+<div class="col-md-12">
+    <div class="row">
+        <div id="thread_details_div" class="panel panel-white post panel-shadow">
+            <div class="post-heading" id="thread_header">
+                <div class="">
+                    <div class="">
+                        <a href="#"><b> @Model.Title</b></a>
+                    </div>
+
+                </div>
+                <div class="pull-left image">
+                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                </div>
+                <div class="pull-left meta">
+                    <div class="title h5">
+                        Posted by:
+                        <a href="#"><b> @Model.Author</b></a>
+                    </div>
+                    <h6 class="text-muted time">@Model.PublishDate.ToShortDateString() @Model.PublishDate.ToShortTimeString()</h6>
+                </div>
+            </div>
+            <div class="post-description">
+                <p>@Model.Text</p>
+                <div class="stats">
+                    <a href="#" class="btn btn-default stat-item">
+                        <i class="fa fa-thumbs-up icon"></i>14
+                    </a>
+                    <a href="#" class="btn btn-default stat-item">
+                        <i class="fa fa-thumbs-down icon"></i>1
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        @*Thread Posts Section*@
+        @*<div id="thread_posts_div" class="panel panel-white post panel-shadow">
+            <ul class="comments-list">
+                <li class="comment">
+                    <div class="comment-body">
+                        <div class="comment-heading">
+                            <h4 class="user">Gavino Free</h4>
+                            <h5 class="time">5 minutes ago</h5>
+                        </div>
+                        <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+                    </div>
+                </li>
+            </ul>
+        </div>*@
+
+        <div id="thread_div">
+            <h3 id="thread_main_header">Thread Comments <a href="#thread_post_content" type="button" id="btn_goto_forumpost" class="btn btn-primary btn-sm btn-group">Create New Post</a></h3>
+            @if (Model.ForumPosts == null || Model.ForumPosts.Count == 0)
+            {
+                <small>
+                    <text>
+                        There are no comments for this thread yet.
+                        <br /> Be the first one to create one!
+                    </text>
+                </small>
+            }
+            @*Adds a unique number to each comment*@
+            @{int threadpostCounter = 1;}
+            @foreach (var item in Model.ForumPosts.OrderByDescending(item => item.PublishDate))
+            {
+                <div id="thread_posts_div" class="">
+                    <small id="thread_info_text"><span class="fa fa-hashtag"></span><text id="thread_post_counter"> @(threadpostCounter++)</text></small>
+                    <br />
+                    <small id="thread_info_text"><span class="fa fa-clock-o"></span><text> Published on: </text><text id="publishDate_text"> @item.PublishDate | </text></small>
+                    <small id="thread_info_text"><span class="fa fa-user"></span><text> Author: </text><a href="#"> @item.Author</a></small>
+
+                    @*Admin buttons*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="btn btn-danger btn-xs btn-group" href="@Url.Action("Delete", "ForumPosts", new { id = item.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
+                            <a class="btn btn-warning btn-xs btn-group" href="@Url.Action("Edit", "ForumPosts", new { id = item.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                        }
+                    }
+                    @*<br /><br />*@
+                    <hr id="thread_hr" />
+                    <p id="thread_post_text">@item.Text</p>
+                </div>
+                @*<br />*@
+            }
+
+        </div>
+
+
+        <br /><br />
+
+        <div class="post-footer">
+            <div id="thread_post_content">
+                @*Add new comment post*@
+                @*Check if user is logged in*@
+                @if (User.Identity.IsAuthenticated)
+            {
+
+                using (Html.BeginForm("CreateThreadPost", "ForumThreads"))
+                {
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+
+                            @Html.Partial("_CreatePost", new Identity_Sample.Models.ForumPost { ForumThreadID = Model.ID })
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="submit" value="Post" class="form-control btn btn-success btn-group" />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                }
+                else
+                {
+                    <fieldset>
+                        <div class="form-horizontal">
+                            <hr />
+                            <h4>New Thread Comment</h4>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @*@Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control", @disabled="disabled", @rows="4" } })*@
+                                    <textarea id="thread_disabled_textarea" class="form-control" disabled="disabled" rows="4">Please register or login to post a comment in the thread!</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<div id="comment_navigate_back_btn">
+    <br />
+    <a class="btn btn-primary" href="@Url.Action("Details", "ForumSections", new { id = Model.ForumSectionID })"><span class="fa fa-arrow-left"></span> Back to Thread List</a>
+    @*@Html.ActionLink("Back to News List", "Index", null, new { @Class = "btn btn-primary btn-md" })*@
+</div>
+
+
+<style>
+    a:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #FFF;
+    }
+
+    a {
+        color: chartreuse;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+    .panel-shadow {
+        box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+    }
+
+    .panel-white {
+        border: 1px solid #dddddd;
+    }
+
+        .panel-white .panel-heading {
+            color: #333;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+        .panel-white .panel-footer {
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+    .post .post-heading {
+        height: 95px;
+        padding: 20px 15px;
+        padding-top: 5px;
+    }
+
+        .post .post-heading .avatar {
+            width: 60px;
+            height: 60px;
+            display: block;
+            margin-right: 15px;
+        }
+
+        .post .post-heading .meta .title {
+            margin-bottom: 0;
+        }
+
+            .post .post-heading .meta .title a {
+                color: chartreuse;
+            }
+
+                .post .post-heading .meta .title a:hover {
+                    color: #FFF;
+                }
+
+        .post .post-heading .meta .time {
+            margin-top: 8px;
+            color: #999;
+        }
+
+    .post .post-image .image {
+        width: 100%;
+        height: auto;
+    }
+
+    .post .post-description {
+        padding: 15px;
+    }
+
+        .post .post-description p {
+            font-size: 14px;
+        }
+
+        .post .post-description .stats {
+            margin-top: 20px;
+        }
+
+            .post .post-description .stats .stat-item {
+                display: inline-block;
+                margin-right: 15px;
+            }
+
+                .post .post-description .stats .stat-item .icon {
+                    margin-right: 8px;
+                }
+
+    .post .post-footer {
+        border-top: 1px solid #ddd;
+        padding: 15px;
+    }
+
+        .post .post-footer .input-group-addon a {
+            color: #454545;
+        }
+
+        .post .post-footer .comments-list {
+            padding: 0;
+            margin-top: 20px;
+            list-style-type: none;
+        }
+
+            .post .post-footer .comments-list .comment {
+                display: block;
+                width: 100%;
+                margin: 20px 0;
+            }
+
+                .post .post-footer .comments-list .comment .avatar {
+                    width: 35px;
+                    height: 35px;
+                }
+
+                .post .post-footer .comments-list .comment .comment-heading {
+                    display: block;
+                    width: 100%;
+                }
+
+                    .post .post-footer .comments-list .comment .comment-heading .user {
+                        font-size: 14px;
+                        font-weight: bold;
+                        display: inline;
+                        margin-top: 0;
+                        margin-right: 10px;
+                    }
+
+                    .post .post-footer .comments-list .comment .comment-heading .time {
+                        font-size: 12px;
+                        color: #aaa;
+                        margin-top: 0;
+                        display: inline;
+                    }
+
+                .post .post-footer .comments-list .comment .comment-body {
+                    margin-left: 50px;
+                }
+
+                .post .post-footer .comments-list .comment > .comments-list {
+                    margin-left: 50px;
+                }
+</style>

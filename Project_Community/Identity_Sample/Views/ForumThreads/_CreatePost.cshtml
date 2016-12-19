@@ -1,0 +1,23 @@
+﻿@model Identity_Sample.Models.ForumPost
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="form-horizontal">
+    <h4>Create New ForumPost</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
+
+    @Html.HiddenFor(model => model.ForumThreadID, new { Name = "ForumThreadID" })
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control", @rows = "5", @required = "required", @maxlenght = "500", @placeholder = "Max 500 characters!" } })
+            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+
