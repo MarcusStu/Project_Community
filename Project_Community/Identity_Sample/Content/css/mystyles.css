@@ -641,3 +641,19 @@ li {
 #thread_details_div {
     background-color: transparent;
 }
+
+#btn_del {
+    color: red;
+}
+
+#btn_edit {
+    color: darkorange;
+}
+
+a:hover#btn_edit {
+    color: #FFF;
+}
+
+a:hover#btn_del {
+    color: #FFF;
+}
