@@ -46,7 +46,7 @@ namespace Identity_Sample.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,addedBy")] ForumSection forumSection)
+        public ActionResult Create([Bind(Include = "ID,Title,Description,addedBy")] ForumSection forumSection)
         {
             if (ModelState.IsValid)
             {

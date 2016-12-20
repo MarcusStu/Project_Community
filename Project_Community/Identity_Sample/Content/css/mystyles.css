@@ -638,6 +638,19 @@ li {
     margin-bottom: 5px;
 }
 
+#thread_post_content {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#threadpost_textarea {
+    max-width: none;
+}
+
+#threadpost_submitbtn {
+    max-width: none;
+}
+
 #thread_details_div {
     background-color: transparent;
 }

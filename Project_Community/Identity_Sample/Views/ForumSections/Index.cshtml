@@ -6,9 +6,9 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3>
-            Forum Section
-        </h3>
+        <h6>
+            <a href="@Url.Action("Index", "ForumSections")">ForumIndex</a>&nbsp;/
+        </h6>
     </div>
 </div>
 
@@ -49,18 +49,49 @@
                         }
                         <h5 class="media-heading"><a href="@Url.Action("Details", "ForumSections", new { id = item.ID })">@item.Title</a></h5>
                         <small class="col-md-12">
-                            @*@item.Description*@
-                            A short description goes here.
+                            @item.Description
                         </small>
                     </div>
                 </div>
                 <div class="alert alert-info msg-date">
-                    <strong>Recent Post: </strong><a href="#">Today </a><small>( </small><small class="time"><i class="fa fa-clock-o"></i> 12:10am</small><small> )</small>
+                    <strong>Recent Post: </strong><a href="#">Thoughts about eSport? </a><small>( </small><small class="time"><i class="fa fa-clock-o"></i> Today, 12:10am</small><small> )</small>
+                    <br />
+                    <strong>Total Threads: </strong><small class="time">
+                        <i class="fa fa-th-list"></i>
+                        @*@foreach (var item1 in Model)
+                            {
+
+                                if (item.ForumThreads == null || item.ForumThreads.Count == 0)
+                                {
+                                    <text>0</text>
+                                }
+                                else
+                                {
+                                    int threadsTotal = item.ForumThreads.Count;
+
+                                    @item1.ForumThreads.Count
+
+                                }
+                            }*@
+                        @if (item.ForumThreads == null || item.ForumThreads.Count == 0)
+                        {
+                            <text>0</text>
+                        }
+                        else
+                        {
+                            @item.ForumThreads.Count
+
+                        }
+                        Threads
+                    </small>
+
+
+
                 </div>
             </div>
 
         }
-
+        <br />
     </div>
 </div>
 
@@ -79,8 +110,9 @@
     }
 
     .message-wrap {
-        box-shadow: 0 0 3px #ddd;
+        /*box-shadow: 0 0 3px #ddd;*/
         padding: 0;
+        border-top: 1px solid #636363;
     }
 
     .msg {
@@ -93,6 +125,7 @@
         padding: 10px;
         max-height: 400px;
         overflow: auto;
+        padding-bottom: 0px;
     }
 
     .time {
@@ -168,6 +201,7 @@
         border: none;
         box-shadow: none;
         border-bottom: 1px solid #ddd;
+        margin-bottom: 5px;
     }
 
 
