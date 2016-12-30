@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace Identity_Sample.Models
 {
@@ -16,6 +17,16 @@ namespace Identity_Sample.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Key]
+        public int userid { get; set; }
+
+        [MaxLength(50)]
+        public string RealName { get; set; }
+
+        public string City { get; set; }
+
+        public string Country { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
