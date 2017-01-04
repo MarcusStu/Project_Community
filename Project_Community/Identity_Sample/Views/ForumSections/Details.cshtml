@@ -51,7 +51,7 @@
                 <div id="thread_div_threads" class="">
                     <small><a href="@Url.Action("Details", "ForumThreads", new { id = item.ID })">@item.Title</a> | </small>
                     <small id="thread_info_text"><span class="fa fa-clock-o"></span><text> Published on: </text><text id="publishDate_text"> @item.PublishDate | </text></small>
-                    <small id="thread_info_text"><span class="fa fa-user"></span><text> Author: </text><a href="#"> @item.Author</a> | </small>
+                    <small id="thread_info_text"><span class="fa fa-user"></span><text> Author: </text><a href="@Url.Action("Index", "UserProfile", new { id = item.Author })"> @item.Author</a> | </small>
                     <small>
                         <span class="glyphicon glyphicon-comment"></span><text id="forum_post_number">
                             @if (item.ForumPosts == null || item.ForumPosts.Count == 0)
@@ -159,3 +159,9 @@
             text-decoration: none;
         }
 </style>
+
+<script>
+    document.getElementById('jsHideBtn').onclick = function () {
+        this.disabled = true;
+    }
+</script>

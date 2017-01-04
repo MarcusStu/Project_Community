@@ -41,7 +41,7 @@
                 <div class="pull-left meta">
                     <div class="title h5">
                         Posted by:
-                        <a href="#"><b> @Model.Author</b></a>
+                        <a href="@Url.Action("Index", "UserProfile", new { id = @Model.Author })"><b> @Model.Author</b></a>
                     </div>
                     <h6 class="text-muted time">@Model.PublishDate.ToShortDateString() @Model.PublishDate.ToShortTimeString()</h6>
                 </div>

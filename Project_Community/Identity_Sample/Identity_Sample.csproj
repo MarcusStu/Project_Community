@@ -206,12 +206,12 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsPostsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Migrations\ForumContext\Configuration.cs" />
-    <Compile Include="Migrations\MyDbContext\Configuration.cs" />
     <Compile Include="Migrations\NewsContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -221,10 +221,8 @@
     <Compile Include="Models\ForumThread.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\NewsContext.cs" />
     <Compile Include="Models\NewsPost.cs" />
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\UserRoleViewModel.cs" />
     <Compile Include="Models\ViewModelForum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -355,6 +353,7 @@
     <Content Include="Views\ForumPosts\Index.cshtml" />
     <Content Include="Views\ForumSections\_CreateThread.cshtml" />
     <Content Include="Views\ForumThreads\_CreatePost.cshtml" />
+    <Content Include="Views\UserProfile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

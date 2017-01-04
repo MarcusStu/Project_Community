@@ -32,18 +32,6 @@ namespace Identity_Sample.Controllers
             {
                 return HttpNotFound();
             }
-            //int threadid = (int)id;
-
-            //var query =
-            //    (from a in db.ForumThreads
-            //     where a.ID == threadid
-            //     select new ViewModelForum.IndexViewModel
-            //     {
-            //         ID = a.ID,
-            //         Title = a.Title,
-            //         ForumSection = a.
-
-            //     });
 
             ViewBag.SecTitle = db.ForumSections.Find(forumThread.ForumSectionID).Title;
 

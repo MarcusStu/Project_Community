@@ -10,10 +10,6 @@ marcusApp.controller('HideShowCtrl', function ($scope) {
     }
 });
 
-document.getElementById('jsHideBtn').onclick = function () {
-    this.disabled = true;
-}
-
 
 
 

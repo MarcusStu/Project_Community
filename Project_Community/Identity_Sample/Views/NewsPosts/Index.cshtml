@@ -45,7 +45,7 @@
                         @*Author,PublishDate,Comments*@
                         <div class="col-md-12 post-header-line">
                             @*<div class="row">*@
-                            <span class="glyphicon glyphicon-user"></span> by <a href="#">@item.Author</a> | <span class="glyphicon glyphicon-calendar">
+                            <span class="glyphicon glyphicon-user"></span> by <a href="@Url.Action("Index", "UserProfile", new { id = item.Author })">@item.Author</a> | <span class="glyphicon glyphicon-calendar">
                             </span><a id="time_news" title="short time format here"> @item.PublishDate | </a><span class="glyphicon glyphicon-comment"></span><a href="@Url.Action("Details", "NewsPosts", new { id = item.ID })">
                                 @if (item.Comments == null || item.Comments.Count == 0)
                                 {
