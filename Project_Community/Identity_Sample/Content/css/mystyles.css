@@ -495,6 +495,7 @@ li {
     padding-right: 5px;
     padding-bottom: 5px;
     padding-top: 5px;
+    margin-bottom: 5px;
 }
 
 #comment_author_field {
@@ -581,6 +582,10 @@ li {
 
 /*Forum Section*/
 
+#createNewThreadBtnDiv {
+    text-align: center;
+}
+
 #thread_disabled_textarea {
     background-color: darkgray;
     border-color: darkgray;
@@ -643,7 +648,7 @@ li {
     padding: 10px;
 }
 
-#threadpost_textarea {
+#threadpost_textarea, #threadpost_inputarea {
     max-width: none;
 }
 

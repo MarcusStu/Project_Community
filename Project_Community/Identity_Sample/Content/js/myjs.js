@@ -1,39 +1,18 @@
-﻿///// <reference path="angular.min.js" />
+﻿/// <reference path="angular.min.js" />
+/// <reference path="~/Scripts/angularjs.min.js" />
 
-//var app = angular.module("myApp", ["ngRoute"])
-//                 .config(function ($routeProvider) {
+//angularjs function to hide/show div in forumsections (create new thread)
+var marcusApp = angular.module('marcusApp', []);
+marcusApp.controller('HideShowCtrl', function ($scope) {
+    $scope.showdiv = false;
+    $scope.hideshowFunc = function () {
+        $scope.showdiv = !$scope.showdiv;
+    }
+});
 
-//                     // Routes to specific urls and sends the request to a specific controller
-//                     $routeProvider
-//                        .when("/home", {
-//                            templateUrl: "/http/Home/home.html",
-//                            controller: "homeController"
-//                        })
-//                         .when("/forum", {
-//                             templateUrl: "/http/Forum/forum.html",
-//                             controller: "forumController"
-//                         })
-//                         // If the request does not match any of the above, it redirects to /home
-//                     .otherwise({
-//                         redirectTo: "/home"
-//                     })
-//                 })
-
-//.controller("homeController", function ($scope, $http) {
-//    $http.get("Home/Index")
-//    //.then(function (response) {
-//    //    $scope.persons = response.data;
-//    //    console.log(response.data);
-//    //})
-//})
-
-//.controller("forumController", function ($scope, $http) {
-//    $http.get("Home/Forum")
-//    //.then(function (response) {
-//    //    $scope.persons = response.data;
-//    //    console.log(response.data);
-//    //})
-//})
+document.getElementById('jsHideBtn').onclick = function () {
+    this.disabled = true;
+}
 
 
 
@@ -247,8 +226,8 @@ $(function () {
 
 
 // Hide/show button for Create Thread
-//jQuery(document).ready(function () {
-//    jQuery('#hideshow').live('click', function (event) {
-//        jQuery('#thread_content').toggle('show');
+//$(document).ready(function () {
+//    $('#hideshow').click (function() {
+//        $('#thread_content').toggle();
 //    });
 //});

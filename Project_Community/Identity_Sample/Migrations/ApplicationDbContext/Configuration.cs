@@ -38,6 +38,12 @@ namespace Identity_Sample.Migrations.ApplicationDbContext
                 var user = new ApplicationUser();
                 user.UserName = "theadmin";
                 user.Email = "theadmin@communitysite.net";
+                user.Age = "24";
+                user.City = "Jönköping";
+                user.Country = "Sweden";
+                user.FirstName = "Marcus";
+                user.LastName = "Sturedahl";
+                user.MemberSince = DateTime.Now;
 
                 string userPWD = "Password!123";
 

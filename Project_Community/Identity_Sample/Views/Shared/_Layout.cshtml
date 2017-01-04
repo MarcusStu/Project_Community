@@ -18,7 +18,7 @@
     @using Identity_Sample.Models
 
 </head>
-<body>
+<body ng-app="marcusApp">
     <!--Start div-->
     <div class="container-fluid" id="body_div">
 
@@ -214,7 +214,7 @@
         <!--Live Chat-->
         <!--Only show if logged in-->
         <section class="box-position">
-            <div class="container">
+            <div class="container" style="margin-right:0px;padding-right:0px;">
                 <div class="col-xs-12 col-md-3 col-sm-4 pull-right hidden-xs">
                     <!--Message box title-->
                     <div id="chat_panel_click" class="panel collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#message" aria-expanded="false" aria-controls="message">
@@ -319,9 +319,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    
 
     <!--My script file-->
     <script src="~/Content/js/myjs.js"></script>

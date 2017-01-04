@@ -18,6 +18,17 @@
     <div class="row">
         <div id="thread_details_div" class="panel panel-white post panel-shadow">
             <div class="post-heading" id="thread_header">
+                <div id="adminBtnsThread" class="pull-right">
+                    @*Admin buttons*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="btn btn-danger btn-xs btn-group" href="@Url.Action("Delete", "ForumThreads", new { id = Model.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
+                            <a class="btn btn-warning btn-xs btn-group" href="@Url.Action("Edit", "ForumThreads", new { id = Model.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                        }
+                    }
+                </div>
                 <div class="">
                     <div class="">
                         <a href="#"><b> @Model.Title</b></a>

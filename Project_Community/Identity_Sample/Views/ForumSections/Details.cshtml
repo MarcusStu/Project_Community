@@ -33,7 +33,7 @@
 
 @*Thread Section*@
 <div class="col-md-12">
-    <div class="row">
+    <div class="row" ng-controller="HideShowCtrl">
         <div id="thread_div">
             <h3 id="thread_main_header">Threads</h3>
             @if (Model.ForumThreads == null || Model.ForumThreads.Count == 0)
@@ -65,7 +65,7 @@
                                 @postValue
                             }
                         </text>
-                            Posts
+                        Posts
                     </small>
 
 
@@ -76,7 +76,7 @@
                         if (User.IsInRole("SuperAdmin"))
                         {
                             <a class="btn btn-danger btn-xs btn-group" href="@Url.Action("Delete", "ForumThreads", new { id = item.ID })"><span class="fa fa-exclamation-triangle"></span> Delete</a>
-                                <a class="btn btn-warning btn-xs btn-group" href="@Url.Action("Edit", "ForumThreads", new { id = item.ID })"><span class="fa fa-pencil"></span> Edit</a>
+                            <a class="btn btn-warning btn-xs btn-group" href="@Url.Action("Edit", "ForumThreads", new { id = item.ID })"><span class="fa fa-pencil"></span> Edit</a>
                         }
                     }
                     @*<hr id="thread_hr" />*@
@@ -88,8 +88,12 @@
 
 
         <br /><br />
-        <input class="btn btn-primary" type='button' id='hideshow' value='hide/show'>
-        <div id="thread_content">
+
+        <div id="createNewThreadBtnDiv">
+            <button id="jsHideBtn" style="margin-bottom:5px;" class="btn btn-success btn-sm" ng-click="hideshowFunc()">Create New Thread</button>
+        </div>
+
+        <div class="col-md-12 col-centered" id="thread_content" ng-show="showdiv">
             @*Add new thread*@
             @*Check if user is logged in*@
             @if (User.Identity.IsAuthenticated)
@@ -104,7 +108,7 @@
 
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-centered">
                                     <input type="submit" value="Post" class="form-control btn btn-success btn-group" />
                                 </div>
                             </div>
@@ -139,7 +143,7 @@
 </div>
 
 <style>
-     a:hover {
+    a:hover {
         text-decoration: none;
         background-color: transparent;
         color: #FFF;
