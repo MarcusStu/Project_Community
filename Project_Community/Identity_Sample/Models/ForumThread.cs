@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Identity_Sample.Models
+namespace Project_Main.Models
 {
     public class ForumThread
     {

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Identity_Sample.Models;
+using Project_Main.Models;
 
-namespace Identity_Sample.Controllers
+namespace Project_Main.Controllers
 {
     public class CommentsController : Controller
     {

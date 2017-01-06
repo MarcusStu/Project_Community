@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Identity_Sample
+namespace Project_Main
 {
     public class FilterConfig
     {

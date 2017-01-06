@@ -1,5 +1,5 @@
-﻿using Identity_Sample.Controllers;
-using Identity_Sample.Models;
+﻿using Project_Main.Controllers;
+using Project_Main.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;

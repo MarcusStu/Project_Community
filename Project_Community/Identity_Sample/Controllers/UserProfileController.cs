@@ -6,10 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security;
-using Identity_Sample.Models;
+using Project_Main.Models;
 using System.Net;
 
-namespace Identity_Sample.Controllers
+namespace Project_Main.Controllers
 {
     public class UserProfileController : Controller
     {

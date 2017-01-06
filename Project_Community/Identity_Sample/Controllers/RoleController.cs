@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
-using Identity_Sample.Models;
-using Identity_Sample.Controllers;
+using Project_Main.Models;
+using Project_Main.Controllers;
 
-namespace Identity_Sample.Controllers
+namespace Project_Main.Controllers
 {
     [OverrideAuthorization]
     [Authorize(Roles = "SuperAdmin")]

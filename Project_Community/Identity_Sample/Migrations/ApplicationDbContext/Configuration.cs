@@ -1,4 +1,4 @@
-namespace Identity_Sample.Migrations.ApplicationDbContext
+namespace Project_Main.Migrations.ApplicationDbContext
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -8,7 +8,7 @@ namespace Identity_Sample.Migrations.ApplicationDbContext
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Identity_Sample.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Project_Main.Models.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -16,7 +16,7 @@ namespace Identity_Sample.Migrations.ApplicationDbContext
             MigrationsDirectory = @"Migrations\ApplicationDbContext";
         }
 
-        protected override void Seed(Identity_Sample.Models.ApplicationDbContext context)
+        protected override void Seed(Project_Main.Models.ApplicationDbContext context)
         {
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);

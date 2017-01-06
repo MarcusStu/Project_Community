@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Identity_Sample
+namespace Project_Main
 {
     public class RouteConfig
     {
