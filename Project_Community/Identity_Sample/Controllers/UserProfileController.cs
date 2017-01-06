@@ -12,6 +12,7 @@ using System.Data.Entity;
 
 namespace Identity_Sample.Controllers
 {
+    [Authorize]
     public class UserProfileController : Controller
     {
         private ApplicationUserManager _userManager;
