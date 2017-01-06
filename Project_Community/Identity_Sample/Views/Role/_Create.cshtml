@@ -1,0 +1,13 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+<h2>Add New User Role:</h2>
+
+@using (Html.BeginForm("Create", "Role"))
+{
+    <p> Enter User Role Name:</p>
+
+    @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+    <input style="margin-top:5px;" class="form-control btn-success" type="submit" value="Create Role" />
+    <br />
+}
+
+@*<a style="margin-bottom:5px;" class="btn btn-primary" href="@Url.Action("Roles", "Admin")"><span class="fa fa-arrow-left"></span> Back to Admin Panel</a>*@

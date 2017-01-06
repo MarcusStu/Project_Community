@@ -1,12 +1,28 @@
-﻿@model Project_Main.Models.ApplicationUser
+﻿@model Identity_Sample.Models.ApplicationUser
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>UserProfile Index</h2>
-<br />
-<p>
-    Firstname: @Model.FirstName
-    <br />
-    Lastname: @Model.LastName
-</p>
+<h2>UserProfile</h2>
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="col-sm-12">
+            <div class="col-md-10">
+                <h2>@Model.FirstName @Model.LastName  -  @Html.ActionLink("Edit Profile", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })</h2>
+                <p><strong>Username: </strong> @Model.UserName </p>
+                <p><strong>Account Role: </strong> <a style="text-decoration:none;" href="#">Role Here</a> </p>
+                <p><strong>Member Since: </strong> @Model.MemberSince.Date.ToShortDateString() </p>
+                <p><strong>Email: </strong> @Model.Email </p>
+                <p><strong>Age: </strong> @Model.Age </p>
+                <p><strong>City: </strong> @Model.City </p>
+                <p><strong>Country: </strong> @Model.Country </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        
+    </div>
+</div>
+
+

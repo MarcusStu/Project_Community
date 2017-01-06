@@ -1,11 +1,11 @@
-namespace Project_Main.Migrations.NewsContext
+namespace Identity_Sample.Migrations.NewsContext
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Project_Main.Models.NewsContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Identity_Sample.Models.NewsContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Project_Main.Migrations.NewsContext
             MigrationsDirectory = @"Migrations\NewsContext";
         }
 
-        protected override void Seed(Project_Main.Models.NewsContext context)
+        protected override void Seed(Identity_Sample.Models.NewsContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -9,16 +9,19 @@
                 <h2>Roles:</h2>
                 @Html.DropDownList("AllRoles", null, htmlAttributes: new { @class = "form-control" })
             </div>
+
+            <div class="col-md-10">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
         </div>
 
-        @*@ViewBag.AllRoles*@
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-        </div>
     </div>
 
     <div>
-        @Html.ActionLink("Back to Admin Panel", "Index", "Admin")
+        <a style="margin-bottom:5px;margin-top:5px;" class="btn btn-primary" href="@Url.Action("Roles", "Admin")"><span class="fa fa-arrow-left"></span> Back to Admin Panel</a>
     </div>
+}
+@if (ViewBag.RoleStatus != null)
+{
+    <p>@ViewBag.RoleStatus</p>
 }

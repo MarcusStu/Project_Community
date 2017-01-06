@@ -1,11 +1,11 @@
-namespace Project_Main.Migrations.ForumContext
+namespace Identity_Sample.Migrations.ForumContext
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Project_Main.Models.ForumContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Identity_Sample.Models.ForumContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace Project_Main.Migrations.ForumContext
             ContextKey = "Identity_Sample.Models.ForumContext";
         }
 
-        protected override void Seed(Project_Main.Models.ForumContext context)
+        protected override void Seed(Identity_Sample.Models.ForumContext context)
         {
             //  This method will be called after migrating to the latest version.
 

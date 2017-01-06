@@ -227,3 +227,25 @@ $(function () {
 //        $('#thread_content').toggle();
 //    });
 //});
+
+// Disable Input button in Admin/Roles til User is chosen
+
+//$('#RolesSubmit_Btn').attr('disabled', 'disabled');
+
+//function updateFormEnabled() {
+//    if (verifyFormSettings()) {
+//        $('#RolesSubmit_Btn').attr('disabled', '');
+//    } else {
+//        $('#RolesSubmit_Btn').attr('disabled', 'disabled');
+//    }
+//}
+
+//function verifyFormSettings() {
+//    if ($('#usersId').val() != '') {
+//        return true;
+//    } else {
+//        return false
+//    }
+//}
+
+//$('#usersId').change(updateFormEnabled);

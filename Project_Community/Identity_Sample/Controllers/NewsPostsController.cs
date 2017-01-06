@@ -6,15 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Project_Main.Models;
+using Identity_Sample.Models;
 
-namespace Project_Main.Controllers
+namespace Identity_Sample.Controllers
 {
+    [OverrideAuthorization]
+    [Authorize(Roles = "SuperAdmin")]
     public class NewsPostsController : Controller
     {
         public NewsContext db = new NewsContext();
 
         // GET: NewsPosts
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.NewsPosts.ToList());
@@ -22,6 +25,7 @@ namespace Project_Main.Controllers
 
         // GET: NewsPosts/Details/5
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +42,7 @@ namespace Project_Main.Controllers
         }
 
         [HttpPost] //, ActionName("Details)")
+        [Authorize]
         public ActionResult detailsPost([Bind(Include = "ID,NewsPostID,Title,Text,Author")] Comment cmt)
         {
             //Comment _cmt = new Comment();

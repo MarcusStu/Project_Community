@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Project_Main
+namespace Identity_Sample
 {
     public class BundleConfig
     {

@@ -1,0 +1,76 @@
+﻿@*@model IEnumerable<MarcusOneDbTest.Models.ApplicationUser>*@
+@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-centered">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Admin Control Panel.</h3>
+            <!-- Nav Here-->
+            <div>
+                <a class="btn btn-group-xs" href="@Url.Action("Index", "Admin", new { id = UrlParameter.Optional })">Users</a>
+                <a style="background-color: chartreuse;color: black;" class="btn btn-group-xs" href="#users">Roles</a>
+                <a class="btn btn-group-xs" href="#users">News Control</a>
+                <a class="btn btn-group-xs" href="#users">Forum Control</a>
+            </div>
+
+            <h1>Roles Control Panel</h1>
+
+            <div>
+                @Html.ActionLink("Create New Role", "Index", "Role", null, new { @class = "btn btn-success" })
+
+                @Html.ActionLink("Delete Role", "Delete", "Role", null, new { @class = "btn btn-danger" })
+
+                @Html.ActionLink("Delete Role from User", "DeleteRoleFromUser", "Role", null, new { @class = "btn btn-danger" })
+
+                @Html.ActionLink("Assign user to Role", "Assign", "Admin", null, new { @class = "btn btn-warning" })
+            </div>
+
+            @*Print list of users*@
+
+
+
+            <h3>Get Roles for a User</h3>
+            @using (Html.BeginForm("GetRoles", "Admin"))
+            {
+                @Html.AntiForgeryToken()
+                <div>
+                    @Html.DropDownList("Users", (IEnumerable<SelectListItem>)ViewBag.Users, "Select user..", new { @class = "form-control btn-group", @id = "usersId" })
+                    @if ("Users" != null)
+                    {
+
+                    }
+                    <input type="submit" class="btn btn-default btn-group" value="Get Roles for this User" id="RolesSubmit_Btn" />
+                    <br /><br /><br />
+                </div>
+            }
+
+            @if (ViewBag.RolesForThisUser != null)
+            {
+                <div>
+                    <h3>Roles for this user </h3>
+                    <ol>
+                        @foreach (string s in ViewBag.RolesForThisUser)
+                        {
+                            <!-- Currently does not work -->
+                            if (ViewBag.RolesForThisUser == null)
+                            {
+                                <li>No Roles assigned for this user.</li>
+                            }
+                            else
+                            {
+                                <li>@s</li>
+                            }
+
+                        }
+                    </ol>
+                </div>
+            }
+            <br />
+
+            <b>@ViewBag.ResultMessage</b>
+        </div>
+    </div>
+</div>

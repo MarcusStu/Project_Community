@@ -1,5 +1,5 @@
-﻿using Project_Main.Controllers;
-using Project_Main.Models;
+﻿using Identity_Sample.Controllers;
+using Identity_Sample.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -30,12 +30,34 @@ namespace Identity_Assignment.Controllers
             var allUsers = (new ApplicationDbContext()).Users.OrderBy(r => r.UserName).ToList();
             ViewBag.AllUsers = allUsers;
 
+            var allUsersX = context.Users.OrderBy(r => r.UserName).ToList();
+            ViewBag.AllUsersX = allUsersX;
+
             var allRoles = context.Roles.ToList();
             ViewBag.AllRoles = allRoles;
 
             var userList = context.Users.OrderBy(r => r.UserName).ToList().Select(rr => new SelectListItem { Value = rr.UserName.ToString(), Text = rr.UserName }).ToList();
             ViewBag.Users = userList;
 
+            return View();
+        }
+
+        public ActionResult Roles()
+        {
+            var user = User.Identity;
+            ViewBag.Name = user.Name;
+
+            var allUsers = (new ApplicationDbContext()).Users.OrderBy(r => r.UserName).ToList();
+            ViewBag.AllUsers = allUsers;
+
+            var allUsersX = context.Users.OrderBy(r => r.UserName).ToList();
+            ViewBag.AllUsersX = allUsersX;
+
+            var allRoles = context.Roles.ToList();
+            ViewBag.AllRoles = allRoles;
+
+            var userList = context.Users.OrderBy(r => r.UserName).ToList().Select(rr => new SelectListItem { Value = rr.UserName.ToString(), Text = rr.UserName }).ToList();
+            ViewBag.Users = userList;
             return View();
         }
         
@@ -51,7 +73,7 @@ namespace Identity_Assignment.Controllers
             var userList = context.Users.OrderBy(d => d.UserName).ToList().Select(dd => new SelectListItem { Value = dd.UserName.ToString(), Text = dd.UserName }).ToList();
             ViewBag.Users = userList;
 
-            return View();
+            return View("Assign");
         }
 
         [HttpPost]
@@ -74,7 +96,7 @@ namespace Identity_Assignment.Controllers
 
             ViewBag.ResultMessage = "User: " + Users + " was successfully added to role " + Roles + "!";
 
-            return View("Index");
+            return View("Roles");
         }
 
 
@@ -98,7 +120,7 @@ namespace Identity_Assignment.Controllers
             var userList = context.Users.OrderBy(r => r.UserName).ToList().Select(rr => new SelectListItem { Value = rr.UserName.ToString(), Text = rr.UserName }).ToList();
             ViewBag.Users = userList;
 
-            return View("Index");
+            return View("Roles");
         }
     }
 }

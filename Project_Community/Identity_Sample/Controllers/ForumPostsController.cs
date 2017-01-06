@@ -6,21 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Project_Main.Models;
+using Identity_Sample.Models;
 
-namespace Project_Main.Controllers
+namespace Identity_Sample.Controllers
 {
+    [Authorize]
     public class ForumPostsController : Controller
     {
         private ForumContext db = new ForumContext();
 
         // GET: ForumPosts
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.ForumPosts.ToList());
         }
 
         // GET: ForumPosts/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -6,21 +6,25 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Project_Main.Models;
+using Identity_Sample.Models;
 
-namespace Project_Main.Controllers
+namespace Identity_Sample.Controllers
 {
+    [OverrideAuthorization]
+    [Authorize(Roles = "SuperAdmin")]
     public class ForumSectionsController : Controller
     {
         private ForumContext db = new ForumContext();
 
         // GET: ForumSections
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.ForumSections.ToList());
         }
 
         // GET: ForumSections/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -60,6 +64,7 @@ namespace Project_Main.Controllers
         }
 
         [HttpPost] //, ActionName("Details)")
+        [Authorize]
         public ActionResult CreateThread([Bind(Include = "ID,ForumSectionID,Title,Text,Author")] ForumThread forumThread)
         {
             //Comment _cmt = new Comment();

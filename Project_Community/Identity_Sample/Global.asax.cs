@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace Project_Main
+namespace Identity_Sample
 {
     public class MvcApplication : System.Web.HttpApplication
     {

@@ -8,142 +8,24 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Admin Control Panel.</h3>
-            <!-- tabs -->
-            <div class="tabbable tabs-left">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#users" data-toggle="tab">Users</a></li>
-                    <li><a href="#roles" data-toggle="tab">Roles</a></li>
-                    <li><a href="#news" data-toggle="tab">News</a></li>
-                    <li><a href="#forum" data-toggle="tab">Forum</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="users">
-                        <div class="">
-                            <h1>Users Control Panel</h1>
-                            <p>Users List etc goes here.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="roles">
-                        <div class="">
-                            <h1>Roles Control Panel</h1>
-
-                            <div>
-                                @Html.ActionLink("Create New Role", "Index", "Role", null, new { @class = "btn btn-success" })
-
-                                @Html.ActionLink("Delete Role", "Delete", "Role", null, new { @class = "btn btn-danger" })
-
-                                @Html.ActionLink("Delete Role from User", "DeleteRoleFromUser", "Role", null, new { @class = "btn btn-danger" })
-
-                                @Html.ActionLink("Assign user to Role", "Assign", "Admin", null, new { @class = "btn btn-warning" })
-                            </div>
-
-                            @*Print list of users*@
-
-
-
-                            <h3>Get Roles for a User</h3>
-                            @using (Html.BeginForm("GetRoles", "Admin"))
-                            {
-                                @Html.AntiForgeryToken()
-                                <div>
-                                    @Html.DropDownList("Users", (IEnumerable<SelectListItem>)ViewBag.Users, "Select User ...", new { @class = "form-control btn-group" })
-                                    <input type="submit" class="btn btn-default btn-group" value="Get Roles for this User" />
-                                    <br /><br /><br />
-                                </div>
-                            }
-
-                            @if (ViewBag.RolesForThisUser != null)
-                            {
-                                <div>
-                                    <h3>Roles for this user </h3>
-                                    <ol>
-                                        @foreach (string s in ViewBag.RolesForThisUser)
-                                        {
-                                            <li>@s</li>
-                                        }
-                                    </ol>
-                                </div>
-                            }
-
-
-
-                            <b>@ViewBag.ResultMessage</b>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane" id="news">
-                        <div class="">
-                            <h1>News Control Panel</h1>
-                            <p>meant to identify articles which deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane" id="forum">
-                        <div class="">
-                            <h1>Forum Control Panel</h1>
-                            <p>deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Nav Here-->
+            <div>
+                <a style="background-color: chartreuse;color: black;" class="btn btn-group-xs" href="#">Users</a>
+                <a class="btn btn-group-xs" href="@Url.Action("Roles", "Admin", new { id = UrlParameter.Optional })">Roles</a>
+                <a class="btn btn-group-xs" href="#users">News Control</a>
+                <a class="btn btn-group-xs" href="#users">Forum Control</a>
             </div>
-            <!-- /tabs -->
+
+            <h1>Users Control Panel</h1>
+            <p>Users List etc goes here.</p>
+            @if (ViewBag.AllUsersX != null)
+            {
+                foreach (var item in @ViewBag.AllUsersX)
+                {
+                    <text>- </text> @item.UserName
+                    <br />
+                }
+            }
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-<style>
-    .tabs-left > .nav-tabs {
-        border-bottom: 0;
-    }
-
-    .tab-content > .tab-pane,
-    .pill-content > .pill-pane {
-        display: none;
-    }
-
-    .tab-content > .active,
-    .pill-content > .active {
-        display: block;
-    }
-
-    .tabs-left > .nav-tabs > li {
-        float: none;
-    }
-
-        .tabs-left > .nav-tabs > li > a {
-            min-width: 74px;
-            margin-right: 0;
-            margin-bottom: 3px;
-        }
-
-    .tabs-left > .nav-tabs {
-        float: left;
-        margin-right: 19px;
-        border-right: 1px solid #ddd;
-    }
-
-        .tabs-left > .nav-tabs > li > a {
-            margin-right: -1px;
-            -webkit-border-radius: 4px 0 0 4px;
-            -moz-border-radius: 4px 0 0 4px;
-            border-radius: 4px 0 0 4px;
-        }
-
-            .tabs-left > .nav-tabs > li > a:hover,
-            .tabs-left > .nav-tabs > li > a:focus {
-                border-color: #eeeeee #dddddd #eeeeee #eeeeee;
-            }
-
-        .tabs-left > .nav-tabs .active > a,
-        .tabs-left > .nav-tabs .active > a:hover,
-        .tabs-left > .nav-tabs .active > a:focus {
-            border-color: #ddd transparent #ddd #ddd;
-            *border-right-color: #ffffff;
-        }
-</style>

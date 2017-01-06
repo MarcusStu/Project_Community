@@ -320,7 +320,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\_Create.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\DeleteRoleFromUser.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
@@ -354,6 +354,8 @@
     <Content Include="Views\ForumSections\_CreateThread.cshtml" />
     <Content Include="Views\ForumThreads\_CreatePost.cshtml" />
     <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\UserProfile\Edit.cshtml" />
+    <Content Include="Views\Admin\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

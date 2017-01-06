@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Project_Main.Models
+namespace Identity_Sample.Models
 {
     public class ForumSection
     {

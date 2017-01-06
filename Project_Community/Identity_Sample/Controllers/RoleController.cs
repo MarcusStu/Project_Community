@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
-using Project_Main.Models;
-using Project_Main.Controllers;
+using Identity_Sample.Models;
+using Identity_Sample.Controllers;
 
-namespace Project_Main.Controllers
+namespace Identity_Sample.Controllers
 {
     [OverrideAuthorization]
     [Authorize(Roles = "SuperAdmin")]
@@ -82,7 +82,7 @@ namespace Project_Main.Controllers
             ViewBag.RoleStatus = AllRoles + " successfully deleted!";
 
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Delete");
         }
 
 
@@ -111,7 +111,7 @@ namespace Project_Main.Controllers
             ViewBag.ResultMessage = "User: " + Users + " was successfully removed from role " + Roles + "!";
 
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("DeleteRoleFromUser");
         }
 
     }

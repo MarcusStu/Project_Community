@@ -6,21 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Project_Main.Models;
+using Identity_Sample.Models;
 
-namespace Project_Main.Controllers
+namespace Identity_Sample.Controllers
 {
+    [Authorize]
     public class CommentsController : Controller
     {
         private NewsContext db = new NewsContext();
 
         // GET: Comments
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Comments.ToList());
         }
 
         // GET: Comments/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -9,10 +9,13 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.DropDownList("Users", (IEnumerable<SelectListItem>)ViewBag.Users, "Select Users...")
-        Role Name: @Html.DropDownList("Roles", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select Roles...")
+        Username : @Html.DropDownList("Users", (IEnumerable<SelectListItem>)ViewBag.Users, "Select Users...", new { @class = "form-control" })
+        Role Name: @Html.DropDownList("Roles", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select Roles...", new { @class = "form-control" })
 
     </p>
 
-    <input type="submit" value="Delete this user from Role" />
+    <input class="form-control btn-danger" type="submit" value="Delete this user from Role" />
+    @ViewBag.ResultMessage
+    <br />
+    <a style="margin-bottom:5px;" class="btn btn-primary" href="@Url.Action("Roles", "Admin")"><span class="fa fa-arrow-left"></span> Back to Admin Panel</a>
 }
