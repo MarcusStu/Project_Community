@@ -24,7 +24,7 @@
 
         <div class="col-centered" id="header_logo_div">
             @*<header>*@
-                <img id="header_logo" src="~/Content/images/marcom_logo.png" />
+            <img id="header_logo" src="~/Content/images/marcom_logo.png" />
             @*</header>*@
 
         </div>
@@ -101,15 +101,15 @@
                                                 {
                                                     if (User.IsInRole("SuperAdmin"))
                                                     {
-                                                <li id="profile_li">
-                                                    <div class="col-lg-12">
-                                                        <p class="text-center">
-                                                            <a id="profile_li" class="btn btn-success btn-block btn-sm" href="@Url.Action("Index", "Admin", new { id = UrlParameter.Optional })">
-                                                                <span class="fa fa-adjust"></span> Admin Panel
-                                                            </a>
-                                                        </p>
-                                                    </div>
-                                                </li>
+                                            <li id="profile_li">
+                                                <div class="col-lg-12">
+                                                    <p class="text-center">
+                                                        <a id="profile_li" class="btn btn-success btn-block btn-sm" href="@Url.Action("Index", "Admin", new { id = UrlParameter.Optional })">
+                                                            <span class="fa fa-adjust"></span> Admin Panel
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </li>
                                                     }
                                                 }
 
@@ -117,19 +117,19 @@
                                                 {
                                                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                                                     {
-                                                @Html.AntiForgeryToken()
+                                            @Html.AntiForgeryToken()
 
-                                                <li id="logout_li">
-                                                    <div class="navbar-login navbar-login-session">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <p id="logout_btn">
-                                                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger btn-block"><span class="fa fa-sign-out"></span> Logout</a>
-                                                                </p>
-                                                            </div>
+                                            <li id="logout_li">
+                                                <div class="navbar-login navbar-login-session">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <p id="logout_btn">
+                                                                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger btn-block"><span class="fa fa-sign-out"></span> Logout</a>
+                                                            </p>
                                                         </div>
                                                     </div>
-                                                </li>
+                                                </div>
+                                            </li>
                                                     }
                                                 }
 
@@ -194,10 +194,6 @@
         <div class="row">
             <div class="container-fluid">
 
-                <!--News Feed Here-->
-                @*<div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
-                        @Html.Partial("~/Views/News/Index.cshtml")
-                    </div>*@
 
                 <div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
 
@@ -205,6 +201,10 @@
                     @RenderBody()
 
                 </div> <!--End maincontent div-->
+                @*SignalR Chat Here*@
+                @*<div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
+                    @Html.Partial("~/Views/Chat/_Chat.cshtml")
+                </div>*@
             </div>
         </div>
 
@@ -322,7 +322,7 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
-    
+
 
     <!--My script file-->
     <script src="~/Content/js/myjs.js"></script>

@@ -236,6 +236,10 @@ a:hover {
 #login_div {
 }
 
+#login_reg_btn {
+    margin-bottom:5px;
+}
+
 
 
 .navbar-collapse in {
@@ -674,4 +678,23 @@ a:hover#btn_edit {
 
 a:hover#btn_del {
     color: #FFF;
+}
+
+
+
+
+
+
+
+/* SignalR Chat */
+
+#chatDiv {
+    border: 1px solid chartreuse;
+    border-radius: 5px;
+    max-height: 250px;
+    display: block;
+    height: 100px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom:5px;
 }
