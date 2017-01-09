@@ -689,7 +689,7 @@ a:hover#btn_del {
 /* SignalR Chat */
 
 #chatDiv {
-    border: 1px solid chartreuse;
+    border: 0px solid chartreuse;
     border-radius: 5px;
     max-height: 250px;
     display: block;

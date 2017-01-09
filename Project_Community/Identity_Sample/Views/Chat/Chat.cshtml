@@ -2,23 +2,32 @@
 @{
     ViewBag.Title = "Chat";
 }
-<h2>Chat</h2>
+<h2>Live Chat Room</h2>
 <div class="col-centered">
 
     <div id="chatDiv">
-        <ul id="discussion"></ul>
+        <ul style="margin:5px;" id="discussion"></ul>
     </div>
 
-        <input style="float: right;max-width: 70px;" class="form-control btn-primary" type="button" id="sendmessage" value="Send" />
+    <button style="float: right;max-width: 80px;" class="form-control btn-primary" type="submit" id="sendmessage">send <i class="fa fa-share"></i></button>
 
     <div style="overflow: hidden; padding-right: .5em;" class="">
-        <input style="max-width: none;" class="form-control" type="text" id="message" placeholder="Write your message.." required />
+        <input style="max-width: none;" class="form-control" type="text" id="message" placeholder="" required />
     </div>
 
     <input type="hidden" id="displayname" value="@User.Identity.Name" />
     <input type="hidden" id="token" value="@ViewBag.Token" />
     <input type="hidden" id="timeNow" value="CurrentTime" />
     <br />
+    <div id="onlineUsers_chat">
+        <p>Online Users:</p>
+        <ul>
+            <li><small><i style="color: chartreuse;" class="fa fa-user" aria-hidden="true"></i> theadmin</small></li>
+            <li><small><i style="color: chartreuse;" class="fa fa-user" aria-hidden="true"></i> Anders</small></li>
+            <li><small><i style="color: red;" class="fa fa-user" aria-hidden="true"></i> Thomas</small></li>
+        </ul>
+    </div>
+
 </div>
 @section scripts {
     <!--Script references. -->
@@ -57,24 +66,32 @@
                     $('#message').val('').focus();
 
                     // Scroll to bottom after message delivery
-                    $('div#chatDiv').scrollTop($('div#chatDiv')[0].scrollHeight)
+                    //$('div#chatDiv').scrollTop($('div#chatDiv')[0].scrollHeight)
                 });
             });
 
             window.setInterval(function () {
-                var elem = document.getElementById('chatDiv');
-                elem.scrollTop = elem.scrollHeight;
+                var divVar = document.getElementById('chatDiv');
+                divVar.scrollTop = divVar.scrollHeight;
             }, 100);
 
 
         });
+
+
         // This optional function html-encodes messages for display in the page.
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
 
-        // Scroll to bottom of chat box when receives new message
+
+        // Scroll function auto
+        // Implement function here........
+        // if client scroll is at the bottom, THEN continue the auto scroll function
+
+
+        // Scroll to bottom of chat box when sends new message
         $('#sendmessage').click(function () {
 
             $('#chatDiv').animate({ scrollTop: $('#chatDiv').prop("scrollHeight") }, 500);
@@ -90,3 +107,30 @@
         });
     </script>
 }
+
+
+<style>
+    /* Let's get this party started */
+    #chatDiv::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    #chatDiv::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    #chatDiv::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(88, 88, 88, 1);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    }
+
+        #chatDiv::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(88, 88, 88, 0.5);
+        }
+</style>

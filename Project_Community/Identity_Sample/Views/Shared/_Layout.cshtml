@@ -173,15 +173,7 @@
                                     <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
                                     <li>@Html.ActionLink("Forum", "Index", "ForumSections")</li>
                                     <li>@Html.ActionLink("News", "Index", "NewsPosts")</li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholder 1 <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" id="nav_drop_1">
-                                            <li><a href="#">Placeholder2</a></li>
-                                            <li><a href="#">Placeholder3</a></li>
-                                            <li><a href="#">Placeholder4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">About</a></li>
+                                    <li>@Html.ActionLink("Live Chat Rooms", "Chat", "Chat")</li>
                                 </ul>
                             </div>
                         </div>
@@ -203,7 +195,7 @@
                 </div> <!--End maincontent div-->
                 @*SignalR Chat Here*@
                 @*<div class="col-md-8 col-lg-8 col-xs-12 col-centered" id="mainContent">
-                    @Html.Partial("~/Views/Chat/_Chat.cshtml")
+                    @Html.Partial("~/Views/Chat/Chat.cshtml")
                 </div>*@
             </div>
         </div>
