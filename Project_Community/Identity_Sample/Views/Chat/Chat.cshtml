@@ -70,9 +70,23 @@
                 });
             });
 
+
+
             window.setInterval(function () {
                 var divVar = document.getElementById('chatDiv');
+                //var windowHeight = divVar.scrollHeight - divVar.scrollTop;
+                //var scrollBottom = divVar.scrollHeight - divVar.scrollHeight - divVar.scrollTop;
+
+                //if (scrollBottom > 31) {
+                //    // Do nothing
+                //}
+                //else {
+                //    divVar.scrollTop = divVar.scrollHeight;
+                //}
+
                 divVar.scrollTop = divVar.scrollHeight;
+
+
             }, 100);
 
 
