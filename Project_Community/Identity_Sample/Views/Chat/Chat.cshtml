@@ -75,15 +75,16 @@
             window.setInterval(function () {
                 var divVar = document.getElementById('chatDiv');
                 //var windowHeight = divVar.scrollHeight - divVar.scrollTop;
-                //var scrollBottom = divVar.scrollHeight - divVar.scrollHeight - divVar.scrollTop;
+                //var scrollBottom = divVar.scrollHeight - divVar.clientHeight - divVar.scrollTop;
 
-                //if (scrollBottom > 20) {
+                //if (scrollBottom > 31) {
                 //    divVar.scrollTop = divVar.scrollTop;
                 //}
                 //else {
                 //    divVar.scrollTop = divVar.scrollHeight;
                 //}
 
+                //console.log('the scroll bottom variable: ' + scrollBottom)
                 divVar.scrollTop = divVar.scrollHeight;
 
 
